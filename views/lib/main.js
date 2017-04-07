@@ -1,16 +1,3 @@
-/*function validar(){
-  var nombre = document.getElementById('nombre').value;
-  var email = document.getElementById('email').value;
-  var pass = document.getElementById('pass').value;
-  var verif = document.getElementById('verif').value;
-
-  if (nombre=="") {
-    $('#alert').html('Debes ingresar un nombre').slideDown(300);
-  }
-
-
-}*/
-
 /***************************************************
  ** VALIDAMOS QUE EXISTA EL CORREO                **
  ***************************************************/

@@ -11,7 +11,6 @@
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 		<link rel="stylesheet" type="text/css" href="views/assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="views/assets/css/main.css">
-		
 	<title>Iniciar Sesión</title>
 </head>
 <body <?php echo $class; ?> >
