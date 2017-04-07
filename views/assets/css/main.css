@@ -14,7 +14,7 @@ h2 {
 i{
   margin:   10px;
 }
-input:not([type]), input[type=text1], input[type=password1],input[type=password2], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
 width: 80%;
 font-size: 15px;
 }
@@ -68,7 +68,7 @@ h3 {
   color: #fff;
 }
 
-.input-field input[type=text1]:focus{
+.input-field input[type=text]:focus{
      border-bottom: 1px solid #ff2b4d;
      box-shadow: 0 1px 0 0 #ff2b4d;
 }
@@ -76,18 +76,10 @@ h3 {
      border-bottom: 1px solid #ff2b4d;
      box-shadow: 0 1px 0 0 #ff2b4d;
    }
-.input-field input[type=password1]:focus {
-     border-bottom: 1px solid #ff2b4d;
-     box-shadow: 0 1px 0 0 #ff2b4d;
-   }
-.input-field input[type=password2].valid {
+   .input-field input[type=pass].valid {
           border-bottom: 1px solid #ff2b4d;
           box-shadow: 0 1px 0 0 #ff2b4d;
    }
-   .input-field input[type=pass].valid {
-             border-bottom: 1px solid #ff2b4d;
-             box-shadow: 0 1px 0 0 #ff2b4d;
-      }
 .input-field input[type=text].valid {
        border-bottom: 1px solid #ff2b4d;
        box-shadow: 0 1px 0 0 #ff2b4d;
@@ -198,7 +190,10 @@ i{
   display: block;
   color:#fff;
 }
-
+#mod_registro [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+    background-color: #ff2b4d;}
+#mod_registro [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #ff2b4d;}
 #mod_registro    input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
     width: 80%;
     font-size: 15px;
