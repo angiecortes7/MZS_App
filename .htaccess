@@ -1,0 +1,8 @@
+RewriteEngine on
+
+RewriteRule ^inicio.html$ index.php
+
+RewriteRule ^registro.html$ index.php?c=usuario&a=viewCreate
+RewriteRule ^guardar_visitante$ index.php?c=usuario&a=create
+
+RewriteRule ^validoEmail$ index.php?c=valid&a=validEmail
