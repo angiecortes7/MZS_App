@@ -172,11 +172,9 @@ i{
 #mod_registro .input-field{
   margin-top: 20px;
 }
-#mod_registro #sex{
-  color: #fff;
-    font-size: 16px;
-    margin-left: 20px;
-    margin-top: 80px;
+#mod_registro #alert{
+  color: red;
+  display: none;
 }
 #mod_registro i{
   margin:   10px;
