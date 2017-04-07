@@ -17,6 +17,7 @@ i{
 input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
 width: 80%;
 font-size: 15px;
+margin-bottom: 10px;
 }
 
 
@@ -172,17 +173,14 @@ i{
 #mod_registro .input-field{
   margin-top: 20px;
 }
-#mod_registro #sex{
-  color: #fff;
-    font-size: 16px;
-    margin-left: 20px;
-    margin-top: 80px;
-}
+
 #mod_registro i{
   margin:   10px;
 }
-#mod_registro .sexo{
-  margin: 10px;
+#mod_registro #alert{
+  width: 250px;
+  color: red;
+  display: none;
 }
 
 #mod_registro .tsexo,.test1,.test2{
