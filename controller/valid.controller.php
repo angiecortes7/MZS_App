@@ -1,5 +1,6 @@
 <?php
-//  require_once 'model/usuario.model.php';
+require_once 'model/usuario.model.php';
+ require_once 'controller/main.controller.php';
 
   Class ValidController{
     private $users;
@@ -8,7 +9,7 @@
         $this->users = new UsuarioModel();
     }
 
-    public function validEmail(){
+    public function validEmailLogin(){
         $email[0] = $_POST["email"];
         $response = $this->users->Umodel->readUserbyEmail($email);
 
@@ -19,6 +20,25 @@
         }
         echo json_encode($return);
     }
+    public function validEmailRegistro(){
+      $email[1] = $_POST["email"];
+      $response = $this->users->readUserbyEmailRe($email);
+
+
+      if(count($response[1])!=1){
+        $return = array("",true);
+      }else{
+          $return = array("El Correo ya existe en nuestra aplicación",false);
+      }
+      echo json_encode($return);
+  }
+
+
+
+  public function cerrarsession(){
+    session_destroy();
+    header("Location: inicio.html");
+}
 
     public function userValid(){
       $data[0] = $_POST["email"];
@@ -32,7 +52,7 @@
 
          //  Creamos las variables de Sesion
          $_SESSION["_usu_codigo"] = $result["usu_codigo"];
-         $_SESSION["_usu_nombre"] = $result["usu_nombre_comp"];
+         //$_SESSION["_usu_nombre"] = $result["usu_nombre_comp"];
          $_SESSION["_usu_rol"]		= $result["rol_codigo"];
          $_SESSION["_usu_mail"]["email"] = $_POST["email"];
 
