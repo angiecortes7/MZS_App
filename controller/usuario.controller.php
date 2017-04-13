@@ -35,27 +35,6 @@ public function viewCreate()
 
 				//print_r($data);
 
-				if(strlen($data[2]) < 8){
-		       $msn= "La clave debe tener al menos 8 caracteres";
-					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-					 }
-					 elseif(!preg_match('`[a-z]`',$data[2])){
-				      $msn = "La clave debe tener al menos una letra minúscula";
-				      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-	 					 }
-						 /*elseif(!preg_match('`[/-\-*-+-%-&-@-¡-!|]`',$data[9])){
-						      $msn = "La clave debe tener al menos un simbolo";
-						      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-								}*/
-						 elseif(!preg_match('`[0-9]`',$data[2])){
-					      $msn = "La clave debe tener al menos un numero";
-					      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-		 					 }
-					 elseif($data[2]!==$data[2]){
-			 		       $msn= "Las contraseñas no coinciden";
-			 					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-							 }
-
 
 
 					if(!isset($_SESSION["_usu_rol"])){
@@ -68,7 +47,30 @@ public function viewCreate()
 						echo $result;
 
 			}
+			/*public function validar(){
+				if(strlen($data[2]) < 8){
+		       $msn= "La clave debe tener al menos 8 caracteres";
+					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+					 }
+					 elseif(!preg_match('`[a-z]`',$data[2])){
+				      $msn = "La clave debe tener al menos una letra minúscula";
+				      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+	 					 }
+						 /*elseif(!preg_match('`[/-\-*-+-%-&-@-¡-!|]`',$data[9])){
+						      $msn = "La clave debe tener al menos un simbolo";
+						      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+								}*/
+						 /*elseif(!preg_match('`[0-9]`',$data[2])){
+					      $msn = "La clave debe tener al menos un numero";
+					      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+		 					 }
+					 elseif($data[2]!==$data[2]){
+			 		       $msn= "Las contraseñas no coinciden";
+			 					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+							 }
 
+
+			}*/
 
 	public function read(){
 		require_once("views/include/header.php");

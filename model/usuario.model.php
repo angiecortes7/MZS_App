@@ -10,40 +10,73 @@ Class UsuarioModel {
 			$this->pdo = DataBase::connect();
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(PDOExepcion $e){
-			die($e->getMessage()."".$e->getLine()."".$e->getFile());
+			$code = $e->getCode();
+			$text = $e->getMessage();
+			$file = $e->getFile();
+			$line = $e->getLine();
+			DataBase::createLog($code, $text, $file, $line);
 		}
 	}
 	public function createUsuario($data){
-            try {
-                $sql = "INSERT INTO mzscann_usuarios (usu_codigo,usu_nombre_comp,usu_mail,rol_codigo) VALUES(?,?,?,?)";
-                $query = $this->pdo->prepare($sql);
-                $query->execute(array($data[4],$data[0],$data[1],$data[5]));
+    	try {
+        $sql = "INSERT INTO mzscann_usuarios (usu_codigo,usu_nombre_comp,usu_mail,rol_codigo) VALUES(?,?,?,?)";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($data[4],$data[0],$data[1],$data[5]));
 
-								$sql = "INSERT INTO mzscann_acceso (acce_token,acc_clave,acc_intento_fallido,acc_estado,usu_codigo)  VALUES(?,?,0,?,?)";
-                $query = $this->pdo->prepare($sql);
-                $query->execute(array($data[7],$data[2],$data[6],$data[4]));
-
-
-								$msn = "Usuario guardado correctamente";
-            } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
-            }
-						return $msn;
-
-        }
+				$sql = "INSERT INTO mzscann_acceso (acce_token,acc_clave,acc_intento_fallido,acc_estado,usu_codigo)  VALUES(?,?,0,?,?)";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($data[7],$data[2],$data[6],$data[4]));
 
 
+				$msn = "Usuario guardado correctamente";
+    } catch (PDOException $e) {
+				$code = $e->getCode();
+				$text = $e->getMessage();
+				$file = $e->getFile();
+				$line = $e->getLine();
 
-					public function readUserbyEmail($data){
+				$msn = "Su registro no se pudo realizar satisfactoriamente, favor notificarle al administrador";
+				DataBase::createLog($code, $text, $file, $line);
+    }
+		return $msn;
+
+}
+
+
+
+	public function readUserbyEmail($data){
+			try{
+
+				$sql = "SELECT mzscann_usuarios.usu_codigo, usu_nombre_comp, acce_token, acc_clave FROM mzscann_usuarios INNER JOIN mzscann_acceso ON mzscann_acceso.usu_codigo = mzscann_usuarios.usu_codigo WHERE usu_mail = ?";
+				$query = $this->pdo->prepare($sql);
+				$query->execute(array($data[0]));
+				$result = $query->fetch(PDO::FETCH_BOTH);
+
+			}catch (PDOException $e) {
+				$code = $e->getCode();
+				$text = $e->getMessage();
+				$file = $e->getFile();
+				$line = $e->getLine();
+				DataBase::createLog($code, $text, $file, $line);
+		}
+
+		return $result;
+	}
+
+					public function readUserbyEmailRe($data){
 							try{
 
 								$sql = "SELECT mzscann_usuarios.usu_codigo, usu_nombre_comp, acce_token, acc_clave FROM mzscann_usuarios INNER JOIN mzscann_acceso ON mzscann_acceso.usu_codigo = mzscann_usuarios.usu_codigo WHERE usu_mail = ?";
 								$query = $this->pdo->prepare($sql);
-								$query->execute(array($data[0]));
+								$query->execute(array($data[1]));
 								$result = $query->fetch(PDO::FETCH_BOTH);
 
 							}catch (PDOException $e) {
-							die($e->getMessage());
+								$code = $e->getCode();
+								$text = $e->getMessage();
+								$file = $e->getFile();
+								$line = $e->getLine();
+								DataBase::createLog($code, $text, $file, $line);
 						}
 
 						return $result;
@@ -56,7 +89,11 @@ Class UsuarioModel {
 							 $query = $this->pdo->prepare($sql);
 							 $query->execute(array($data));
 							 }catch (PDOException $e) {
-									 die($e->getMessage());
+								 $code = $e->getCode();
+								$text = $e->getMessage();
+								$file = $e->getFile();
+								$line = $e->getLine();
+								DataBase::createLog($code, $text, $file, $line);
 							 }
 
 						}
@@ -71,7 +108,11 @@ Class UsuarioModel {
 
                 return $result;
             } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
+							$code = $e->getCode();
+							$text = $e->getMessage();
+							$file = $e->getFile();
+							$line = $e->getLine();
+							DataBase::createLog($code, $text, $file, $line);
 
             }
         }
@@ -83,9 +124,13 @@ Class UsuarioModel {
             $result = $query->fetchALL(PDO::FETCH_BOTH);
             return $result;
         }catch (PDOException $e) {
-            die($e->getMessage()."".$e->getLine()."".$e->getFile());
-        }
-    }/*
+					$code = $e->getCode();
+					$text = $e->getMessage();
+					$file = $e->getFile();
+					$line = $e->getLine();
+					DataBase::createLog($code, $text, $file, $line);
+    }
+	}/*
 		public static phpmailer($data){
 
 			 require 'PHPMailerAutoload.php';
@@ -132,7 +177,11 @@ Class UsuarioModel {
                 $result = $query->fetch(PDO::FETCH_BOTH);
                 return $result;
             } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
+							$code = $e->getCode();
+							$text = $e->getMessage();
+							$file = $e->getFile();
+							$line = $e->getLine();
+							DataBase::createLog($code, $text, $file, $line);
             }
 
         }
@@ -144,7 +193,11 @@ Class UsuarioModel {
 
                 $msn = "Modifico con exito!";
             } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
+							$code = $e->getCode();
+							$text = $e->getMessage();
+							$file = $e->getFile();
+							$line = $e->getLine();
+							DataBase::createLog($code, $text, $file, $line);
             }
             return $msn;
         }
@@ -156,7 +209,11 @@ Class UsuarioModel {
                 $query->execute(array($field));
                 $msn = "Eliminado correctamente!";
             } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
+							$code = $e->getCode();
+							$text = $e->getMessage();
+							$file = $e->getFile();
+							$line = $e->getLine();
+							DataBase::createLog($code, $text, $file, $line);
             }
             return $msn;
         }
