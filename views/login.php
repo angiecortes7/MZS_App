@@ -1,6 +1,6 @@
 <section id="login_principal">
 <div class="container">
-	<form id="contact" method="post" action="?c=main&a=login">
+	<form id="contact" method="post"  data-parsley-validate>
 		<h2>MyZone</h2>
 		<h3>Scann</h3>
 		<div class="input-field">

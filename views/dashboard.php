@@ -14,5 +14,8 @@
 	<a href="?c=restaurante" class="btn btn-default">RESTAURANTE</a>
 	<a href="?c=usuario" class="btn btn-default">USUARIO</a>
 </div>
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="Cerrar-Session">Cerrar Sesión</a></li>
+      </ul>
 
 <!--<h1><?php// echo $saludo.' '.$_SESSION["_usu_nombre"]; ?> </h1>

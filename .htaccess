@@ -1,8 +1,15 @@
 RewriteEngine on
 
-RewriteRule ^inicio.html$ index.php
+RewriteRule ^inicio.html$       index.php
 
-RewriteRule ^registro.html$ index.php?c=usuario&a=viewCreate
+RewriteRule ^registro.html$     index.php?c=usuario&a=viewCreate
+
 RewriteRule ^guardar_visitante$ index.php?c=usuario&a=create
 
-RewriteRule ^validoEmail$ index.php?c=valid&a=validEmail
+RewriteRule ^dashboard$         index.php?c=main&a=dashboard
+
+RewriteRule ^Cerrar-Session$    index.php?c=valid&a=cerrarsession
+
+RewriteRule ^acceso$             index.php?c=valid&a=userValid
+RewriteRule ^validoEmail$        index.php?c=valid&a=validEmailLogin
+RewriteRule ^validoEmailRegistro$        index.php?c=valid&a=validEmailRegistro
