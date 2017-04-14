@@ -1,6 +1,7 @@
 <?php
 require_once ('model/usuario.model.php');
 require_once ('views/assets/random/random.php');
+require_once ('PHPMailer/PHPMailerAutoload.php');
 
 class UsuarioController{
 	private $Umodel;
@@ -15,6 +16,12 @@ class UsuarioController{
 		require_once ('views/include/footer.php');
 
 	}
+	public function recuperarcontrasena(){
+		$class = 'class = "olvido"';
+		require_once ('views/include/header_movil.php');
+		require_once ('views/password.php');
+		require_once ('views/include/footer.php');
+			}
 
 public function viewCreate()
 	{
@@ -95,13 +102,35 @@ public function viewCreate()
             $result = $this->Umodel->deleteUsuario($data);
             header("Location: index.php?c=usuario&msn=$result");
         }
-				/*
-				public function phpmailer(){
-		            $data = $_GET["usucode"];
-		            $result = $this->Umodel->deleteUsuario($data);
-		            header("Location: index.php?c=usuario&msn=$result");
-		        }*/
-}
+				public function enviarMensaje_Contrasena(){
+            /*$user = $this->Umodel->readUserbyEmail($_POST["usu_mail"]);*/
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'myzonescann.1@gmail.com';
+            $mail->Password = '1myzonescann';
+
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('myzonescann.1@gmail.com'); // el mismo del username
+            $mail->addAddress('acvanegas2@gmail.com');
+            $mail->isHTML(true);
+            $mail->Subject = 'Recuperar Contraseña';
+						$mail->Body = 'Recuperación de contraseña';
+            $mail->MsgHTML('
+              <p>HOLA</p>
+            ');
+            $mail->CharSet = 'UTF-8';
+            if ($mail->send()) {
+                $msn = "Envio correctamente";
+            } else {
+                $msn = "Correo no invalido";
+            }
+        }
+
+			}
 
 
 ?>
