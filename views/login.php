@@ -8,7 +8,7 @@
 		</div>
 		<div class="input-field">
 	<i class="fa fa-unlock-alt" aria-hidden="true"></i><input id="pass" type="password" name="data[]" class="validate" placeholder="Contraseña" required>
-	<p class="key_olv"><a href="#">¿Ha olvidado su contraseña?</a></p>
+	<p class="key_olv"><a href="Recupera-Contraseña.html">¿Ha olvidado su contraseña?</a></p>
 	 </div>
 	 <button id="to-about-section" target="_self" class="hero-btn default">Ingresar</button>
 	 <div class="row">
