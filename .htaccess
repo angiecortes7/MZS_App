@@ -4,6 +4,10 @@ RewriteRule ^inicio.html$       index.php
 
 RewriteRule ^registro.html$     index.php?c=usuario&a=viewCreate
 
+RewriteRule ^Recupera-Contraseña.html$ index.php?c=usuario&a=recuperarcontrasena
+
+RewriteRule ^Envio-mensaje.asp$   index.php?c=usuario&a=enviarMensaje_Contrasena
+
 RewriteRule ^guardar_visitante$ index.php?c=usuario&a=create
 
 RewriteRule ^dashboard$         index.php?c=main&a=dashboard
@@ -13,3 +17,4 @@ RewriteRule ^Cerrar-Session$    index.php?c=valid&a=cerrarsession
 RewriteRule ^acceso$             index.php?c=valid&a=userValid
 RewriteRule ^validoEmail$        index.php?c=valid&a=validEmailLogin
 RewriteRule ^validoEmailRegistro$        index.php?c=valid&a=validEmailRegistro
+RewriteRule ^validoEmail-Contraseña$        index.php?c=valid&a=validEmailPassword

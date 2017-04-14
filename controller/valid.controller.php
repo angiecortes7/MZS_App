@@ -35,7 +35,18 @@
         echo json_encode($return);
     }
 
-    
+    public function validEmailPassword(){
+        $email[0] = $_POST["email"];
+        $response = $this->users->readUserbyEmail($email);
+
+
+        if(count($response[0])==0){
+          $return = array("El correo no existe en nuestra aplicación",false);
+        }else{
+          $return = array("",true);
+        }
+        echo json_encode($return);
+    }
 
     public function cerrarsession(){
       session_destroy();

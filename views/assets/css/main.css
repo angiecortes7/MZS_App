@@ -220,3 +220,74 @@ i{
       font-size: 14px;
     color: #ff3f5e;
 }
+/**************************ESTILOS OLVIDO CONTRASEÑA************/
+#olvido_contraseña i{
+  margin:   10px;
+}
+
+
+
+ .olvido {
+  font-family: "lato", Helvetica, Arial, sans-serif;
+  background-image: url("../images/olvido-min.png");*/
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media only screen and (max-width: 767px) {
+    .olvido {
+    background-image: url("../images/olvido-min2.png");
+    height: 100vh;
+
+  }
+#olvido_contraseña  .container{
+    max-width: 100px;
+  }
+#olvido_contraseña button .hero-btn, .hero-second-btn {
+    margin: 0 55px;
+  }
+}
+
+#olvido_contraseña .container {
+  max-width: 300px;
+  margin: 30px auto;
+  position: relative;
+}
+
+#olvido_contraseña #contact {
+  background: rgba(0,0,0,0.7);
+  padding: 15px;
+
+
+
+}
+#olvido_contraseña h3 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 40px;
+  font-weight: 500;
+  font-family: 'Lato';
+  text-align: center;
+  color: #fff;
+}
+
+
+#olvido_contraseña input[type=email], textarea.materialize-textarea {
+ width: 80%;
+ font-size: 18px;}
+ #olvido_contraseña form p {
+     margin-bottom: 10px;
+     text-align: center;
+     color: #fff;
+     font-size: 20px;
+ }
+ @media (max-width:768px){
+   #olvido_contraseña button.hero-btn, .hero-second-btn {
+     margin: 0 55px;
+ }
+ }
+
+#olvido_contraseña i{
+  color: #fff;
+  font-size: 10px;
+}

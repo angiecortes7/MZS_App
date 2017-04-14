@@ -19,6 +19,25 @@ $("#email").focus(function(){
   $(this).siblings("span").remove();
 })
 
+/*************** RECUPERAR CONTRASEÑA **********
+***************************************************/
+
+$("#button").focus(function(){
+$("#emailp").siblings("span").remove();
+var email = $("#emailp").val();
+
+$.post("validoEmail-Contraseña",{email:email},function(data){
+var data = JSON.parse(data);
+
+$("#emailp").after("<span class='error'>"+data[0]+"</span>")
+
+
+});
+})
+
+$("#emailp").focus(function(){
+$(this).siblings("span").remove();
+})
 /***************************************************
  ** INICIAMOS SESION SI EL USUARIO EXISTE         **
  ***************************************************/
