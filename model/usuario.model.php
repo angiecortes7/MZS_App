@@ -63,6 +63,22 @@ Class UsuarioModel {
 		return $result;
 	}
 
+	public function readUserByToken($field){
+            try {
+                $sql="SELECT * FROM mzscann_acceso WHERE acce_token = ?";
+                $query = $this->pdo->prepare($sql);
+                $query->execute(array($field));
+                $result = $query->fetch(PDO::FETCH_BOTH);
+
+            } catch (PDOException $e) {
+							$code = $e->getCode();
+							$text = $e->getMessage();
+							$file = $e->getFile();
+							$line = $e->getLine();
+							DataBase::createLog($code, $text, $file, $line);
+					}
+					return $result;
+        }
 					public function readUserbyEmailRe($data){
 							try{
 
@@ -96,6 +112,22 @@ Class UsuarioModel {
 								DataBase::createLog($code, $text, $file, $line);
 							 }
 
+						}
+
+						public function updatePassword($data){
+						try {
+								$sql = "UPDATE mzscann_acceso SET acc_clave = ? WHERE acce_token = ?";
+								$query = $this->pdo->prepare($sql);
+								$query->execute(array($data[1],$data[7]));
+								$msn = "Modifico contraseña con exito";
+						} catch (PDOException $e) {
+								$code = $e->getCode();
+						 		$text = $e->getMessage();
+						 		$file = $e->getFile();
+						 		$line = $e->getLine();
+						 DataBase::createLog($code, $text, $file, $line);
+						}
+						return $msn;
 						}
 
 
