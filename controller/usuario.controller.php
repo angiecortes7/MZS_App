@@ -3,6 +3,7 @@ require_once ('model/usuario.model.php');
 require_once ('views/assets/random/random.php');
 require_once ('PHPMailer/PHPMailerAutoload.php');
 
+
 class UsuarioController{
 	private $Umodel;
 
@@ -16,6 +17,7 @@ class UsuarioController{
 		require_once ('views/include/footer.php');
 
 	}
+
 	public function recuperarcontrasena(){
 		$class = 'class = "olvido"';
 		require_once ('views/include/header_movil.php');
@@ -30,28 +32,35 @@ public function viewCreate()
 		require_once("views/modules/mod_usuario/inser_usuario.php");
 		require_once("views/include/footer.php");
 	}
-
-
+	public function restorePassword(){
+		$class = 'class = "restore"';
+	  $field = $_GET["acce_token"];
+	  require_once 'views/include/header_movil.php';
+	  require_once 'views/recupera_cuenta.php';
+	  require_once 'views/include/footer.php';
+	 }
+	public function updatePassword(){
+	  $data = $_POST["data"];
+	  $result = $this->Umodel->updatePassword($data);
+	  header("Location: index.php?c=usuario&msn=$result");
+	        }
 
 	public function create(){
-		    $data = $_POST["data"];
-				$data[2]= password_hash($data[2], PASSWORD_DEFAULT);
-				$data[4]= "USU-".date('Ymd').'-'.date('i');
-				$data[7]= randAlphanum(30);
-				$data[6]= "Inactivo";
+		$data = $_POST["data"];
+		$data[2]= password_hash($data[2], PASSWORD_DEFAULT);
+		$data[4]= "USU-".date('Ymd').'-'.date('i');
+		$data[7]= randAlphanum(30);
+		$data[6]= "Inactivo";
 
 				//print_r($data);
+		if(!isset($_SESSION["_usu_rol"])){
+				$data[5] = "rol_visit_def";
+			}
 
 
-
-					if(!isset($_SESSION["_usu_rol"])){
-							$data[5] = "rol_visit_def";
-						}
-
-
-            $result = $this->Umodel->createUsuario($data);
-						header("Location: index.php?c=usuario&a=viewCreate&msn=$result");
-						echo $result;
+      $result = $this->Umodel->createUsuario($data);
+			header("Location: index.php?c=usuario&a=viewCreate&msn=$result");
+			echo $result;
 
 			}
 			/*public function validar(){
@@ -103,7 +112,8 @@ public function viewCreate()
             header("Location: index.php?c=usuario&msn=$result");
         }
 				public function enviarMensaje_Contrasena(){
-            /*$user = $this->Umodel->readUserbyEmail($_POST["usu_mail"]);*/
+						$data = $_POST["data"];
+						$response = $this->Umodel->readUserbyEmail($data);
             $mail = new PHPMailer();
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
@@ -114,13 +124,13 @@ public function viewCreate()
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
-            $mail->setFrom('myzonescann.1@gmail.com'); // el mismo del username
-            $mail->addAddress('acvanegas2@gmail.com');
+            $mail->setFrom('myzonescann.1@gmail.com'); // este es el mismo del mail->username
+            $mail->addAddress($data[0]);
             $mail->isHTML(true);
-            $mail->Subject = 'Recuperar Contraseña';
-						$mail->Body = 'Recuperación de contraseña';
+            $mail->Subject = 'Recupera tu Contraseña ';
+						$mail->Body = 'Recuperación de contraseña MyZoneScann';
             $mail->MsgHTML('
-              <p>HOLA</p>
+						<a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'">Haz clic aquí para tu nueva contraseña</a>
             ');
             $mail->CharSet = 'UTF-8';
             if ($mail->send()) {
