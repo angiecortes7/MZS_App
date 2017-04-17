@@ -227,7 +227,7 @@ i{
 
 
 
- .olvido {
+ .olvido,.restore {
   font-family: "lato", Helvetica, Arial, sans-serif;
   background-image: url("../images/olvido-min.png");*/
   background-position: center center;
@@ -235,7 +235,7 @@ i{
   background-repeat: no-repeat;
 }
 @media only screen and (max-width: 767px) {
-    .olvido {
+    .olvido,.restore {
     background-image: url("../images/olvido-min2.png");
     height: 100vh;
 
@@ -290,4 +290,35 @@ i{
 #olvido_contraseña i{
   color: #fff;
   font-size: 10px;
+}
+
+/*RECUPERA CONTRASEÑA*/
+#recuperarcontrasena i{
+  margin: 10px;
+  color: #fff;
+  font-size: 15px;
+}
+
+#recuperarcontrasena .fa-envelope:before {
+    content: "\f0e0";
+    margin-right: 15px;}
+
+#recuperarcontrasena input[type=email], textarea.materialize-textarea {
+ width: 80%;
+ font-size: 18px;}
+
+ #recuperarcontrasena h3 {
+   margin: 5px 0 15px;
+   display: block;
+   font-size: 40px;
+   font-weight: 500;
+   font-family: 'Lato';
+   text-align: center;
+   color: #fff;
+ }
+#recuperarcontrasena .hero-btn{
+  padding: 2px 15px;
+    font-size: 20px;
+    margin: 0 21px;
+    margin-top: 20px;
 }
