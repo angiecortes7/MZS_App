@@ -118,7 +118,7 @@ Class UsuarioModel {
 						try {
 								$sql = "UPDATE mzscann_acceso SET acc_clave = ? WHERE acce_token = ?";
 								$query = $this->pdo->prepare($sql);
-								$query->execute(array($data[1],$data[7]));
+								$query->execute(array($data[0],$data[1]));
 								$msn = "Modifico contraseña con exito";
 						} catch (PDOException $e) {
 								$code = $e->getCode();

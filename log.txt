@@ -1,0 +1,2 @@
+2017-04-20 08:24:35 -- Error del Sistema: # 21000 SQLSTATE[21000]: Cardinality violation: 1242 Subquery returns more than 1 row En el archivo C:\xampp\htdocs\MZS_App\model\usuario.model.php En la linea --> 106
+
