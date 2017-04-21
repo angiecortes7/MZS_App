@@ -2,7 +2,6 @@
 
 Class UsuarioModel {
 	private $pdo;
-    private static $token;
 
 	function __CONSTRUCT()
 	{
@@ -28,7 +27,7 @@ Class UsuarioModel {
         $query->execute(array($data[7],$data[2],$data[6],$data[4]));
 
 
-				$msn = "Usuario guardado correctamente";
+				$msn = "Usuario guardado correctamente, hemos enviado un correo a tu cuenta para activarla.";
     } catch (PDOException $e) {
 				$code = $e->getCode();
 				$text = $e->getMessage();
@@ -62,7 +61,6 @@ Class UsuarioModel {
 
 		return $result;
 	}
-
 	public function readUserByToken($field){
             try {
                 $sql="SELECT * FROM mzscann_acceso WHERE acce_token = ?";
@@ -79,6 +77,7 @@ Class UsuarioModel {
 					}
 					return $result;
         }
+
 					public function readUserbyEmailRe($data){
 							try{
 
@@ -114,21 +113,21 @@ Class UsuarioModel {
 
 						}
 
-						public function updatePassword($data){
-						try {
-								$sql = "UPDATE mzscann_acceso SET acc_clave = ? WHERE acce_token = ?";
-								$query = $this->pdo->prepare($sql);
-								$query->execute(array($data[0],$data[1]));
-								$msn = "Modifico contraseña con exito";
-						} catch (PDOException $e) {
-								$code = $e->getCode();
-						 		$text = $e->getMessage();
-						 		$file = $e->getFile();
-						 		$line = $e->getLine();
-						 DataBase::createLog($code, $text, $file, $line);
-						}
-						return $msn;
-						}
+					public function updatePassword($data){
+					try {
+							$sql = "UPDATE mzscann_acceso SET acc_clave = ? WHERE acce_token = ?";
+							$query = $this->pdo->prepare($sql);
+							$query->execute(array($data[0],$data[1]));
+							$msn = "Modifico contraseña con exito";
+					} catch (PDOException $e) {
+						$code = $e->getCode();
+					 $text = $e->getMessage();
+					 $file = $e->getFile();
+					 $line = $e->getLine();
+					 DataBase::createLog($code, $text, $file, $line);
+					}
+					return $msn;
+			}
 
 
     public function readRol(){
@@ -162,45 +161,7 @@ Class UsuarioModel {
 					$line = $e->getLine();
 					DataBase::createLog($code, $text, $file, $line);
     }
-	}/*
-		public static phpmailer($data){
-
-			 require 'PHPMailerAutoload.php';
-
-			 $mail = new PHPMailer;
-
-
-
-			 $mail->isSMTP();                                      // Set mailer to use SMTP
-			 $mail->Host = 'smtp1.gmail.com;';  // Specify main and backup SMTP servers
-			 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-			 $mail->Username = 'ana@gmail';                 // SMTP username
-			 $mail->Password = '123456';                           // SMTP password
-			 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-			 $mail->Port = 587;                                    // TCP port to connect to
-
-			 $mail->setFrom('ana@gmail', 'Recuperar contrasena');
-			 $mail->addAddress($data[2]);     // Add a recipient
-			               // Name is optional
-			 $mail->addReplyTo('info@example.com', 'Information');
-			 $mail->addCC('cc@example.com');
-			 $mail->addBCC('bcc@example.com');
-
-
-			 $mail->isHTML(true);                                  // Set emasil format to HTML
-
-
-
-			 $mail->Body    = '<a href="http://localhost/DIANA_TAMAYO&cod='".$data[token]."'">';
-
-
-			 if(!$mail->send()) {
-			     echo 'Message could not be sent.';
-			     echo 'Mailer Error: ' . $mail->ErrorInfo;
-			 } else {
-			     echo 'Message has been sent';
- 			 }
-		}*/
+	}
     public function readUsuarioByCode($field){
             try {
                 $sql="SELECT * FROM mzscann_usuarios WHERE usu_codigo = ?";
@@ -234,6 +195,18 @@ Class UsuarioModel {
             return $msn;
         }
 
+				public function updateStatusByToken($data){
+            try {
+                $sql="UPDATE mzscann_acceso SET acc_estado = 'Activo' WHERE acce_token = ?";
+                $query = $this->pdo->prepare($sql);
+                $query->execute(array($data));
+                $msn = "Estado modificado con exito!";
+            } catch (PDOException $e) {
+                die($e->getMessage()."".$e->getLine()."".$e->getFile());
+            }
+            return $msn;
+        }
+
     public function deleteUsuario($field){
             try {
                 $sql = "DELETE FROM mzscann_usuarios WHERE usu_codigo = ?";
@@ -249,6 +222,77 @@ Class UsuarioModel {
             }
             return $msn;
         }
+
+
+				public function sendEmailActiveAccount($data){
+					$mail = new PHPMailer();
+					$mail->isSMTP();
+					$mail->Host = 'smtp.gmail.com';
+					$mail->SMTPAuth = true;
+					$mail->Username = 'myzonescann.1@gmail.com';
+					$mail->Password = 'adsamyzone';
+
+					$mail->SMTPSecure = 'tls';
+					$mail->Port = 587;
+
+					$mail->setFrom('myzonescann.1@gmail.com'); // este es el mismo del mail->username
+					$mail->addAddress($data[1]);
+					$mail->isHTML(true);
+					$mail->Subject = 'Activa tu cuenta ';
+					$mail->Body = 'Activación de cuenta MyZoneScann';
+            $mail->MsgHTML('<!DOCTYPE html>
+            <html>
+              <head>
+                <meta charset="utf-8">
+                <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+              </head>
+              <body >
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;line-height:24px;margin:0;padding:0;width:100%;font-size:17px;color:#373737;background:#f5f5f5 "><tbody><tr>  <td valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tbody><tr><td valign="bottom" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse;padding:20px 16px 12px;">
+                </td>
+                  </tr></tbody></table></td>
+                    </tr><tr><td valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
+                    <table cellpadding="32" cellspacing="0" border="0" align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
+                      <tr>
+                            </tr><tbody><tr><td width="546" valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
+                      <div style="max-width:600px;margin:0 auto">
+                        <div style="text-align:center;">
+                            <img src="http://fotos.subefotos.com/d290713089d677ae0b4cc33d4e96f337o.png" width="200" height="200" style="outline:none;text-decoration:none;border:none;" class="CToWUd"></a>
+                          </div>
+                        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem">
+                          <h2 style="color:#42a5f5;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">¿Olvidaste tu contraseña?</h2>
+                          <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
+                            Hola <strong>'.$data[1].'</strong>,
+                          </p>
+                          <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
+                          Escuchamos que perdiste tu contraseña de MentalidadFitness. Lo siento por eso pero no te preocupes puedes utilizar el siguiente enlace para cambiar tu contraseña
+                          </p>
+                          <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
+                            Si tienes alguna pregunta, envianos un correo a <a href="mailto:mentalidadfitness@gmail.com" style="color:#439fe0;font-weight:bold;text-decoration:none;word-break:break-word" target="_blank">mentalidadfitness@<span class="il">gmail</span>.com</a> Nos encantaría ayudarte
+                          </p>
+                            <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
+                              Gracias,<br>
+                              Tus amigos de <span style="color:#42a5f5;font-weight:bold;">Mentalidad Fitness.</span>
+                            </p>
+                            <a  href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=updateStatus&acce_token='.$response["acce_token"].'" style="display:block;text-decoration:none;color:black;border-radius:5px;margin-left:30%;border:2px solid #f8e71c;height:20;background-color:#f8e71c;width:42%;height:50px;font-size:20px;margin-top:5%;font-family:sans-serif;font-weight:semibold;cursor:pointer; text-align:center; line-height:2.5; color:#212121;">CAMBIAR</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr></tbody></table></td>
+                  </tr></tbody></table>
+              </body>
+            </html>
+    ');
+            $mail->CharSet = 'UTF-8';
+            if ($mail->send()) {
+                $msn = "Envio correctamente";
+                header("Location: index.php?c=views&a=forgetPass&msn=$msn");
+            } else {
+                $msn = "Correo invalido";
+                header("Location: index.php?c=views&a=forgetPass&msn=$msn");
+            }
+        }
+
 
     public function __DESTRUCT(){
 
