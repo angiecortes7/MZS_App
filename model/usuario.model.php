@@ -28,7 +28,7 @@ Class UsuarioModel {
 
 
 
-				$msn = "Usuario guardado correctamente, hemos enviado un correo a $data[1] para activarla.";
+				$msn = "Usuario guardado correctamente, hemos enviado un correo a tu cuenta para activarla.";
 
 
     } catch (PDOException $e) {
