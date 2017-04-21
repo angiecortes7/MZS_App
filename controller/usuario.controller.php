@@ -168,7 +168,9 @@ public function viewCreate()
 
 						    <p style="font-size:20px;line-height:24px;margin:0 0 16px;font-family: "Lato", sans-serif;">
 						    Si has olvidado tu contraseña de <b>MyZoneScann</b> podrás tener una nueva fácilmente, lo único que tienes que hacer es ingresar al siguiente enlace:       </p>
-						<a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'" style="margin-left:20%;">Haz clic aquí para tu nueva contraseña</a>
+
+						<a href="http://localhost:8000/MZS_App/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'" style="margin-left:20%;">Haz clic aquí para tu nueva contraseña</a>
+
 
 						</div>
 							</div>
