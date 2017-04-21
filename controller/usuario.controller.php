@@ -39,57 +39,56 @@ public function viewCreate()
 	  require_once 'views/recupera_cuenta.php';
 	  require_once 'views/include/footer.php';
 	 }
+
 	public function updatePassword(){
 	  $data = $_POST["data"];
 		$data[0]= password_hash($data[0], PASSWORD_DEFAULT);
 	  $result = $this->Umodel->updatePassword($data);
 	  header("Location: inicio.html?&msn=$result");
 	  }
-
 		public function create(){
-				$data = $_POST["data"];
-						//print_r($data);
-			if(!isset($_SESSION["_usu_rol"])){
-					$data[5] = "rol_visit_def";
-			}
-			//contraseña
-						if(strlen($data[2]) <= 8){
-				       $msn= "La clave debe tener al menos 8 caracteres";
-							 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-							 }
-							 elseif(!preg_match('`[a-z]`',$data[2])){
-						      $msn = "La clave debe tener al menos una letra";
+			$data = $_POST["data"];
+					//print_r($data);
+		if(!isset($_SESSION["_usu_rol"])){
+				$data[5] = "rol_visit_def";
+		}
+		//contraseña
+					if(strlen($data[2]) <= 8){
+			       $msn= "La clave debe tener al menos 8 caracteres";
+						 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+						 }
+						 elseif(!preg_match('`[a-z]`',$data[2])){
+					      $msn = "La clave debe tener al menos una letra";
+					      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+		 					 }
+
+							 elseif(!preg_match('`[0-9]`',$data[2])){
+						      $msn = "La clave debe tener al menos un numero";
 						      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
 			 					 }
+								 else if(!preg_match('/(?=[@#%&]|-|_)/', $data[2])){
+									 $msn = " contener al menos uno de los siguientes simbolos: @#%&-_";
+									 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+								 }
 
-								 elseif(!preg_match('`[0-9]`',$data[2])){
-							      $msn = "La clave debe tener al menos un numero";
-							      header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-				 					 }
-									 else if(!preg_match('/(?=[@#%&]|-|_)/', $data[2])){
-										 $msn = " contener al menos uno de los siguientes simbolos: @#%&-_";
-										 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-									 }
+						  elseif($data[2]!== $data[3]){
+				 		    	$msn= "Las contraseñas no coinciden";
+				 					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
+								 }
 
-							  elseif($data[2]!== $data[3]){
-					 		    	$msn= "Las contraseñas no coinciden";
-					 					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-									 }
+								else {
+									$data[2]= password_hash($data[2], PASSWORD_DEFAULT);
+	 								$data[4]= "USU-".date('Ymd').'-'.date('i');
+	 								$data[7]= randAlphanum(30);
+	 								$data[6]= "Inactivo";
+									$result = $this->Umodel->createUsuario($data);
+									$response = $this->Umodel->readUserbyEmail($data);
+								 	$response = $this->Umodel->sendEmailActiveAccount($data);
+										header("Location: index.php?c=usuario&a=viewCreate&msn=$result");
+										echo $result;
 
-									else {
-										$data[2]= password_hash($data[2], PASSWORD_DEFAULT);
-		 								$data[4]= "USU-".date('Ymd').'-'.date('i');
-		 								$data[7]= randAlphanum(30);
-		 								$data[6]= "Inactivo";
-										$result = $this->Umodel->createUsuario($data);
-										$response = $this->Umodel->readUserbyEmail($data);
-									 	$response = $this->Umodel->sendEmailActiveAccount($data);
-											header("Location: index.php?c=usuario&a=viewCreate&msn=$result");
-											echo $result;
-
-									 }
-									}
-
+								 }
+								}
 
 	public function read(){
 		require_once("views/include/header.php");

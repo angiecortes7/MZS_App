@@ -13,7 +13,7 @@
 					<i class="fa fa-envelope" aria-hidden="true"></i><input type="email" id="email" class="validate"  placeholder=" Correo electrónico " name="data[]" required>
 
           <i class="fa fa-unlock-alt" aria-hidden="true"></i><input  type="password" id="pass1r"  name="data[]" class="validate" placeholder="Contraseña" required>
-					<i class="fa fa-unlock" aria-hidden="true"></i><input  type="password" id="pass2r" class="validate"  placeholder="Verificar Contraseña" required>
+					<i class="fa fa-unlock" aria-hidden="true"></i><input  type="password" id="pass2r" name="data[]" class="validate"  placeholder="Verificar Contraseña" required>
           <label for="verif"></label>
         </div>
         <div class="g-recaptcha" id="recapcha" data-sitekey="6LcrghkUAAAAAInKTj9B-5z16U6M_oUzZdhce_84"></div>
