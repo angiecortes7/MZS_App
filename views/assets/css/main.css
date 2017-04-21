@@ -119,31 +119,22 @@ h3 {
   padding-left: 30px;
 }
 .hero-btn, .hero-second-btn {
-    background: transparent;
-    color: #ff2b4b;
+    color: #FFFFFF;
+    background: rgba(236,76,52,1);
+    background: -moz-linear-gradient(left, rgba(236,76,52,1) 0%, rgba(255,43,78,0.92) 50%, rgba(255,43,77,0.83) 100%);
+    background: -webkit-linear-gradient(left, rgba(236,76,52,1) 0%, rgba(255,43,78,0.92) 50%, rgba(255,43,77,0.83) 100%);
     border: 4px solid #ff2b4b;
     border-radius: 5px;
-    padding: 2px 40px;
-    font-size: 15px;
+    padding: 2px 50px;
+    font-size: 20px;
     margin: 0 40px;
     margin-top: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     text-align: center;
     display: inline-block;
-    -webkit-transition: 0.2s background linear;
-    -moz-transition: 0.2s background linear;
-    transition: 0.2s background linear;
     font-family: 'Lato';
     text-decoration: none !important;
 }
-.hero-btn:hover, .hero-second-btn:hover {
-    color: #FFFFFF;
-	background: rgba(236,76,52,1);
-	background: -moz-linear-gradient(left, rgba(236,76,52,1) 0%, rgba(255,43,78,0.92) 50%, rgba(255,43,77,0.83) 100%);
-	background: -webkit-linear-gradient(left, rgba(236,76,52,1) 0%, rgba(255,43,78,0.92) 50%, rgba(255,43,77,0.83) 100%);
-}
+
 i{
   color: #fff;
   font-size: 10px;
@@ -243,7 +234,7 @@ i{
 #olvido_contraseña  .container{
     max-width: 100px;
   }
-#olvido_contraseña button .hero-btn, .hero-second-btn {
+#olvido_contraseña  button .hero-btn, .hero-second-btn {
     margin: 0 55px;
   }
 }
@@ -279,7 +270,7 @@ i{
      margin-bottom: 10px;
      text-align: center;
      color: #fff;
-     font-size: 20px;
+     font-size: 17px;
  }
  @media (max-width:768px){
    #olvido_contraseña button.hero-btn, .hero-second-btn {
