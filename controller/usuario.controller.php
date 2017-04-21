@@ -44,7 +44,7 @@ public function viewCreate()
 	  $data = $_POST["data"];
 		$data[0]= password_hash($data[0], PASSWORD_DEFAULT);
 	  $result = $this->Umodel->updatePassword($data);
-	  header("Location: index.php?c=usuario&msn=$result");
+	  header("Location: inicio.html?&msn=$result");
 	  }
 
 		public function create(){
@@ -90,6 +90,7 @@ public function viewCreate()
 
 								 }
 								}
+
 
 	public function read(){
 		require_once("views/include/header.php");
