@@ -26,7 +26,7 @@ Class UsuarioModel {
         $query = $this->pdo->prepare($sql);
         $query->execute(array($data[7],$data[2],$data[6],$data[4]));
 
-				$msn = "Usuario guardado correctamente, hemos enviado un correo a $data[1] para activarla.";
+				$msn = "Su registro ha sido correctamente, hemos enviado un correo a $data[1] para verficar la cuenta, por favor revisar en correo no deseado.";
 
     } catch (PDOException $e) {
 				$code = $e->getCode();

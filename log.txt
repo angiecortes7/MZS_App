@@ -8,3 +8,7 @@
 
 2017-04-21 04:46:28 -- Error del Sistema: # 23000 SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'edison@gmail.com' for key 'usu_mail' En el archivo C:\xampp\htdocs\MZS_App\model\usuario.model.php En la linea --> 23
 
+2017-04-21 05:37:40 -- Error del Sistema: # 23000 SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'USU-20170421-37' for key 'PRIMARY' En el archivo C:\xampp\htdocs\MZS_App\model\usuario.model.php En la linea --> 23
+
+2017-04-21 05:38:23 -- Error del Sistema: # 23000 SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'USU-20170421-38' for key 'PRIMARY' En el archivo C:\xampp\htdocs\MZS_App\model\usuario.model.php En la linea --> 23
+
