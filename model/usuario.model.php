@@ -241,47 +241,38 @@ Class UsuarioModel {
 					$mail->Subject = 'Activa tu cuenta ';
 					$mail->Body = 'Activación de cuenta MyZoneScann';
             $mail->MsgHTML('<!DOCTYPE html>
-            <html>
-              <head>
-                <meta charset="utf-8">
-                <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-              </head>
-              <body >
-                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;line-height:24px;margin:0;padding:0;width:100%;font-size:17px;color:#373737;background:#f5f5f5 "><tbody><tr>  <td valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tbody><tr><td valign="bottom" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse;padding:20px 16px 12px;">
-                </td>
-                  </tr></tbody></table></td>
-                    </tr><tr><td valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
-                    <table cellpadding="32" cellspacing="0" border="0" align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
-                      <tr>
-                            </tr><tbody><tr><td width="546" valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
-                      <div style="max-width:600px;margin:0 auto">
-                        <div style="text-align:center;">
-                            <img src="http://fotos.subefotos.com/d290713089d677ae0b4cc33d4e96f337o.png" width="200" height="200" style="outline:none;text-decoration:none;border:none;" class="CToWUd"></a>
-                          </div>
-                        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem">
-                          <h2 style="color:#42a5f5;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">¿Olvidaste tu contraseña?</h2>
-                          <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
-                            Hola <strong>'.$data[1].'</strong>,
-                          </p>
-                          <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
-                          Escuchamos que perdiste tu contraseña de MentalidadFitness. Lo siento por eso pero no te preocupes puedes utilizar el siguiente enlace para cambiar tu contraseña
-                          </p>
-                          <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
-                            Si tienes alguna pregunta, envianos un correo a <a href="mailto:mentalidadfitness@gmail.com" style="color:#439fe0;font-weight:bold;text-decoration:none;word-break:break-word" target="_blank">mentalidadfitness@<span class="il">gmail</span>.com</a> Nos encantaría ayudarte
-                          </p>
-                            <p style="font-size:17px;line-height:24px;margin:0 0 16px;font-family: "Roboto", sans-serif;">
-                              Gracias,<br>
-                              Tus amigos de <span style="color:#42a5f5;font-weight:bold;">Mentalidad Fitness.</span>
-                            </p>
-                            <a  href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=updateStatus&acce_token='.$response["acce_token"].'" style="display:block;text-decoration:none;color:black;border-radius:5px;margin-left:30%;border:2px solid #f8e71c;height:20;background-color:#f8e71c;width:42%;height:50px;font-size:20px;margin-top:5%;font-family:sans-serif;font-weight:semibold;cursor:pointer; text-align:center; line-height:2.5; color:#212121;">CAMBIAR</a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr></tbody></table></td>
-                  </tr></tbody></table>
-              </body>
-            </html>
+						<html>
+						  <head>
+						    <meta charset="utf-8">
+						    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+						  </head>
+						  <body >
+						  <table width="100%"  style="border-collapse:collapse;line-height:20px;margin:0;padding:0;width:100%;font-size:20px;color:#373737;background:#f5f5f5 "><tbody><tr>  <td valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
+							<table width="100%"  style="border-collapse:collapse"><tbody><tr><td valign="bottom" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse;padding:30px 16px 12px;">
+						    </td>
+						      </tr></tbody></table></td>
+						      </tr><tr><td valign="top" font-family: "Lato", sans-serif;";border-collapse:collapse">
+						      <table cellpadding="15"  align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
+						        <tr>
+						        </tr><tbody><tr><td width="640" valign="top" style=font-family: "Lato", sans-serif;";border-collapse:collapse">
+						        <div style="max-width:600px;margin:0 auto">
+						        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem;font-family: "Lato", sans-serif;">
+						           <h2 style="color:#ff2b4d;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">Activa tu cuenta en MyZoneScann</h2>
+						    <div style="background: #fff; padding: 12px;font-family: "Lato", sans-serif;">
+						      Hola <strong>'.$data[1].'</strong>,
+						    </p>
+						    <p style="font-size:20px;line-height:24px;margin:0 0 16px;font-family: "Lato", sans-serif;">
+						    Tu cuenta se ha registrado correctamente, pero en estos momentos estás inactivo y no podrás ingresar nuestra app de <b>MyZoneScann</b> Para activarla ingresa al siguiente enlace:       </p>
+
+						      <a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=updateStatus&acce_token='.$response["acce_token"].'" style="margin-left:30%;">Clic aquí para activar tu cuenta </a>
+						      </div>
+						        </div>
+						      </td>
+						    </tr></tbody></table></td>
+						  </tr></tbody></table>
+						</body>
+						</html>
+
     ');
             $mail->CharSet = 'UTF-8';
             if ($mail->send()) {

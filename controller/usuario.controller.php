@@ -72,10 +72,10 @@ public function viewCreate()
 									 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
 								 }
 
-						  elseif($data[2]!== $data[3]){
+						  /*elseif($data[2]!== $data[3]){
 				 		    	$msn= "Las contraseñas no coinciden";
 				 					 header("Location: index.php?c=usuario&a=viewCreate&msn=$msn");
-								  }
+								 }*/
 
 								else {
 									$data[2]= password_hash($data[2], PASSWORD_DEFAULT);
@@ -147,9 +147,38 @@ public function viewCreate()
             $mail->isHTML(true);
             $mail->Subject = 'Recupera tu Contraseña ';
 						$mail->Body = 'Recuperación de contraseña MyZoneScann';
-            $mail->MsgHTML('
-						<a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'">Haz clic aquí para tu nueva contraseña</a>
-            ');
+            $mail->MsgHTML('<!DOCTYPE html>
+						<html>
+						  <head>
+						    <meta charset="utf-8">
+						    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+						  </head>
+						  <body >
+						  <table width="100%"  style="border-collapse:collapse;line-height:20px;margin:0;padding:0;width:100%;font-size:20px;color:#373737;background:#f5f5f5 "><tbody><tr>  <td valign="top" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse">
+							<table width="100%"  style="border-collapse:collapse"><tbody><tr><td valign="bottom" style="font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;border-collapse:collapse;padding:30px 16px 12px;">
+						    </td>
+						      </tr></tbody></table></td>
+						      </tr><tr><td valign="top" font-family: "Lato", sans-serif;";border-collapse:collapse">
+						      <table cellpadding="15"  align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
+						        <tr>
+						        </tr><tbody><tr><td width="640" valign="top" style=font-family: "Lato", sans-serif;";border-collapse:collapse">
+						        <div style="max-width:600px;margin:0 auto">
+						        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem;font-family: "Lato", sans-serif;">
+						           <h2 style="color:#ff2b4d;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">Recupera tu contraseña</h2>
+
+						    <p style="font-size:20px;line-height:24px;margin:0 0 16px;font-family: "Lato", sans-serif;">
+						    Si has olvidado tu contraseña de <b>MyZoneScann</b> podrás tener una nueva fácilmente, lo único que tienes que hacer es ingresar al siguiente enlace:       </p>
+						<a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'" style="margin-left:20%;">Haz clic aquí para tu nueva contraseña</a>
+						
+						</div>
+							</div>
+						</td>
+					</tr></tbody></table></td>
+				</tr></tbody></table>
+			</body>
+			</html>
+
+');
             $mail->CharSet = 'UTF-8';
             if ($mail->send()) {
                 $msn = "Envio correctamente";
