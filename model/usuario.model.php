@@ -29,7 +29,6 @@ Class UsuarioModel {
 
 				$msn = "Usuario guardado correctamente, hemos enviado un correo a $data[1] para activarla.";
 
-
     } catch (PDOException $e) {
 				$code = $e->getCode();
 				$text = $e->getMessage();
