@@ -41,10 +41,10 @@ public function viewCreate()
 	 }
 	public function updatePassword(){
 	  $data = $_POST["data"];
-		$data[0]=password_hash($data[0],PASSWORD_DEFAULT);
+		$data[0]= password_hash($data[0], PASSWORD_DEFAULT);
 	  $result = $this->Umodel->updatePassword($data);
 	  header("Location: index.php?c=usuario&msn=$result");
-	        }
+	  }
 
 	public function create(){
 		$data = $_POST["data"];
@@ -120,7 +120,7 @@ public function viewCreate()
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'myzonescann.1@gmail.com';
-            $mail->Password = '1myzonescann';
+            $mail->Password = 'adsamyzone';
 
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
@@ -131,7 +131,7 @@ public function viewCreate()
             $mail->Subject = 'Recupera tu Contraseña ';
 						$mail->Body = 'Recuperación de contraseña MyZoneScann';
             $mail->MsgHTML('
-						<a href="http://localhost:8000/MZS_App/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'">Haz clic aquí para tu nueva contraseña</a>
+							<a href="http://localhost:8000/MZS_App/index.php?c=usuario&a=restorePassword&acce_token='. $response["acce_token"] .'">Haz clic aquí para tu nueva contraseña</a>
             ');
             $mail->CharSet = 'UTF-8';
             if ($mail->send()) {

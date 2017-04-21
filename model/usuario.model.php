@@ -2,7 +2,6 @@
 
 Class UsuarioModel {
 	private $pdo;
-    private static $token;
 
 	function __CONSTRUCT()
 	{
@@ -62,7 +61,6 @@ Class UsuarioModel {
 
 		return $result;
 	}
-
 	public function readUserByToken($field){
             try {
                 $sql="SELECT * FROM mzscann_acceso WHERE acce_token = ?";
@@ -79,6 +77,7 @@ Class UsuarioModel {
 					}
 					return $result;
         }
+
 					public function readUserbyEmailRe($data){
 							try{
 
@@ -114,21 +113,21 @@ Class UsuarioModel {
 
 						}
 
-						public function updatePassword($data){
-						try {
-								$sql = "UPDATE mzscann_acceso SET acc_clave = ? WHERE acce_token = ?";
-								$query = $this->pdo->prepare($sql);
-								$query->execute(array($data[0],$data[1]));
-								$msn = "Modifico contraseña con exito";
-						} catch (PDOException $e) {
-								$code = $e->getCode();
-						 		$text = $e->getMessage();
-						 		$file = $e->getFile();
-						 		$line = $e->getLine();
-						 DataBase::createLog($code, $text, $file, $line);
-						}
-						return $msn;
-						}
+					public function updatePassword($data){
+					try {
+							$sql = "UPDATE mzscann_acceso SET acc_clave = ? WHERE acce_token = ?";
+							$query = $this->pdo->prepare($sql);
+							$query->execute(array($data[0],$data[1]));
+							$msn = "Modifico contraseña con exito";
+					} catch (PDOException $e) {
+						$code = $e->getCode();
+					 $text = $e->getMessage();
+					 $file = $e->getFile();
+					 $line = $e->getLine();
+					 DataBase::createLog($code, $text, $file, $line);
+					}
+					return $msn;
+			}
 
 
     public function readRol(){
@@ -162,45 +161,7 @@ Class UsuarioModel {
 					$line = $e->getLine();
 					DataBase::createLog($code, $text, $file, $line);
     }
-	}/*
-		public static phpmailer($data){
-
-			 require 'PHPMailerAutoload.php';
-
-			 $mail = new PHPMailer;
-
-
-
-			 $mail->isSMTP();                                      // Set mailer to use SMTP
-			 $mail->Host = 'smtp1.gmail.com;';  // Specify main and backup SMTP servers
-			 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-			 $mail->Username = 'ana@gmail';                 // SMTP username
-			 $mail->Password = '123456';                           // SMTP password
-			 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-			 $mail->Port = 587;                                    // TCP port to connect to
-
-			 $mail->setFrom('ana@gmail', 'Recuperar contrasena');
-			 $mail->addAddress($data[2]);     // Add a recipient
-			               // Name is optional
-			 $mail->addReplyTo('info@example.com', 'Information');
-			 $mail->addCC('cc@example.com');
-			 $mail->addBCC('bcc@example.com');
-
-
-			 $mail->isHTML(true);                                  // Set emasil format to HTML
-
-
-
-			 $mail->Body    = '<a href="http://localhost/DIANA_TAMAYO&cod='".$data[token]."'">';
-
-
-			 if(!$mail->send()) {
-			     echo 'Message could not be sent.';
-			     echo 'Mailer Error: ' . $mail->ErrorInfo;
-			 } else {
-			     echo 'Message has been sent';
- 			 }
-		}*/
+	}
     public function readUsuarioByCode($field){
             try {
                 $sql="SELECT * FROM mzscann_usuarios WHERE usu_codigo = ?";
