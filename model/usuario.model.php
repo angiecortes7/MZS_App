@@ -97,7 +97,7 @@ Class UsuarioModel {
 						return $result;
 					}
 
-					public function updateUserFail($data){
+				public function updateUserFail($data){
 						try{
 
 							 $sql = "UPDATE mzscann_acceso SET acc_intento_fallido = (acc_intento_fallido + 1) WHERE usu_codigo = (SELECT usu_codigo FROM mzscann_usuarios WHERE usu_mail = ?) ";
@@ -196,16 +196,16 @@ Class UsuarioModel {
         }
 
 				public function updateStatusByToken($data){
-            try {
-                $sql="UPDATE mzscann_acceso SET acc_estado = 'Activo' WHERE acce_token = ?";
-                $query = $this->pdo->prepare($sql);
-                $query->execute(array($data));
-                $msn = "Estado modificado con exito!";
-            } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
-            }
-            return $msn;
-        }
+					try {
+							$sql="UPDATE mzscann_acceso SET acc_estado = 'Activo' WHERE acce_token = ?";
+							$query = $this->pdo->prepare($sql);
+							$query->execute(array($data));
+							$msn = "Estado modificado con exito!";
+					} catch (PDOException $e) {
+							die($e->getMessage()."".$e->getLine()."".$e->getFile());
+					}
+					return $msn;
+			}
 
     public function deleteUsuario($field){
             try {
@@ -264,7 +264,7 @@ Class UsuarioModel {
 						    <p style="font-size:20px;line-height:24px;margin:0 0 16px;font-family: "Lato", sans-serif;">
 						    Tu cuenta se ha registrado correctamente, pero en estos momentos estás inactivo y no podrás ingresar nuestra app de <b>MyZoneScann</b> Para activarla ingresa al siguiente enlace:       </p>
 
-						      <a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=updateStatus&acce_token='.$response["acce_token"].'" style="margin-left:30%;">Clic aquí para activar tu cuenta </a>
+						      <a href="http://localhost:8000/MZS_App/index.php?c=usuario&a=updateStatus&status=true&acce_token='.$data[7].'" style="margin-left:30%;">Clic aquí para activar tu cuenta </a>
 						      </div>
 						        </div>
 						      </td>
