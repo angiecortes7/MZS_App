@@ -91,6 +91,7 @@ public function viewCreate()
 		require_once("views/modules/mod_usuario/read_usuario.php");
 		require_once("views/include/footer.php");
 	}
+
 	public function updateStatus(){
 	  $status = $_GET["status"];
 	  if ($status == true) {
