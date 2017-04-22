@@ -24,6 +24,7 @@ Class MainController{
 
 		require_once("views/include/footer.php");
 	}
+	
 
 }
 
