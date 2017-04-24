@@ -38,10 +38,7 @@ Class UsuarioModel {
 				DataBase::createLog($code, $text, $file, $line);
     }
 		return $msn;
-
 }
-
-
 
 	public function readUserbyEmail($data){
 			try{
@@ -254,10 +251,12 @@ Class UsuarioModel {
 						      </tr><tr><td valign="top" font-family: "Lato", sans-serif;";border-collapse:collapse">
 						      <table cellpadding="15"  align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
 						        <tr>
-						        </tr><tbody><tr><td width="640" valign="top" style=font-family: "Lato", sans-serif;";border-collapse:collapse">
+										<div style="text-align:center;">
+						           <img src="https://fotos.subefotos.com/e8d6dd1fcb8c0df5131994e4d863ebd1o.jpg"></img>
+						        </div>
 						        <div style="max-width:600px;margin:0 auto">
 						        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem;font-family: "Lato", sans-serif;">
-						           <h2 style="color:#ff2b4d;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">Activa tu cuenta en MyZoneScann</h2>
+						          <h2 style="color:#ff2b4d;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">Activa tu cuenta en nuestra App</h2>
 						    <div style="background: #fff; padding: 12px;font-family: "Lato", sans-serif;">
 						      Hola <strong>'.$data[1].'</strong>,
 						    </p>

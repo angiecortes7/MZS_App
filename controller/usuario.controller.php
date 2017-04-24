@@ -19,21 +19,33 @@ class UsuarioController{
 	}
 
 	public function recuperarcontrasena(){
-		$class = 'class = "olvido"';
+		$class = 'class = "password_rec"';
+		$title = "Recupera tu contraseña";
+
 		require_once ('views/include/header_movil.php');
 		require_once ('views/password.php');
 		require_once ('views/include/footer.php');
+			}
+	public function completar_perfil(){
+		$class = 'class = "completar_p"';
+		$title = "Compelta tu perfil";
+
+		require_once("views/include/header_movil.php");
+		require_once ("views/completar-perfil.php");
+		require_once("views/include/footer.php");
 			}
 
 public function viewCreate()
 	{
 		$class = 'class = "registro"';
+		$title = "Registrate en MyZoneScann";
 		require_once("views/include/header_movil.php");
 		require_once("views/modules/mod_usuario/inser_usuario.php");
 		require_once("views/include/footer.php");
 	}
 	public function restorePassword(){
 		$class = 'class = "restore"';
+		$title = "Modifica tu contraseña";
 	  $field = $_GET["acce_token"];
 	  require_once 'views/include/header_movil.php';
 	  require_once 'views/recupera_cuenta.php';
@@ -99,7 +111,7 @@ public function viewCreate()
 	     	$responseRead = $this->Umodel->readUserByToken($token);
 	      $_SESSION["_token"]      = $responseRead["acce_token"];
 				$msn = "El usuario se ha activado correctamente";
- 				header("Location: inicio.html?&msn=$msn");
+ 				header("Location: index.php?c=usuario&a=completar_perfil&msn=$msn");
 	     }
 	}
 
@@ -152,6 +164,9 @@ public function viewCreate()
 						      </tr><tr><td valign="top" font-family: "Lato", sans-serif;";border-collapse:collapse">
 						      <table cellpadding="15"  align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
 						        <tr>
+										<div style="text-align:center;">
+						           <img src="https://fotos.subefotos.com/e8d6dd1fcb8c0df5131994e4d863ebd1o.jpg"></img>
+						        </div>
 						        </tr><tbody><tr><td width="640" valign="top" style=font-family: "Lato", sans-serif;";border-collapse:collapse">
 						        <div style="max-width:600px;margin:0 auto">
 						        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem;font-family: "Lato", sans-serif;">
