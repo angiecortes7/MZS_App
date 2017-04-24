@@ -12,6 +12,8 @@ RewriteRule ^guardar_visitante$ index.php?c=usuario&a=create
 
 RewriteRule ^dashboard$         index.php?c=main&a=dashboard
 
+
+RewriteRule ^Completar-Perfil$         index.php?c=usuario&a=completar_perfil
 RewriteRule ^Cerrar-Session$    index.php?c=valid&a=cerrarsession
 
 RewriteRule ^acceso$             index.php?c=valid&a=userValid
