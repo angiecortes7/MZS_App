@@ -4,6 +4,7 @@ Class MainController{
 
 	public function mainPage(){
 		$class= 'class ="login"';
+		$title = "Login MyZoneScann";
 
 	if(isset($_SESSION["_usu_codigo"])){
 			header("Location: index.php?c=main&a=dashboard");
@@ -24,6 +25,7 @@ Class MainController{
 
 		require_once("views/include/footer.php");
 	}
+
 
 }
 

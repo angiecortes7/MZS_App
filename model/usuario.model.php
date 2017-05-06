@@ -26,10 +26,7 @@ Class UsuarioModel {
         $query = $this->pdo->prepare($sql);
         $query->execute(array($data[7],$data[2],$data[6],$data[4]));
 
-
-
-				$msn = "Usuario guardado correctamente, hemos enviado un correo a tu cuenta para activarla.";
-
+				$msn = "Su registro ha sido correctamente, hemos enviado un correo a $data[1] para verficar la cuenta, por favor revisar en correo no deseado.";
 
     } catch (PDOException $e) {
 				$code = $e->getCode();
@@ -41,10 +38,7 @@ Class UsuarioModel {
 				DataBase::createLog($code, $text, $file, $line);
     }
 		return $msn;
-
 }
-
-
 
 	public function readUserbyEmail($data){
 			try{
@@ -100,7 +94,7 @@ Class UsuarioModel {
 						return $result;
 					}
 
-					public function updateUserFail($data){
+				public function updateUserFail($data){
 						try{
 
 							 $sql = "UPDATE mzscann_acceso SET acc_intento_fallido = (acc_intento_fallido + 1) WHERE usu_codigo = (SELECT usu_codigo FROM mzscann_usuarios WHERE usu_mail = ?) ";
@@ -199,16 +193,16 @@ Class UsuarioModel {
         }
 
 				public function updateStatusByToken($data){
-            try {
-                $sql="UPDATE mzscann_acceso SET acc_estado = 'Activo' WHERE acce_token = ?";
-                $query = $this->pdo->prepare($sql);
-                $query->execute(array($data));
-                $msn = "Estado modificado con exito!";
-            } catch (PDOException $e) {
-                die($e->getMessage()."".$e->getLine()."".$e->getFile());
-            }
-            return $msn;
-        }
+					try {
+							$sql="UPDATE mzscann_acceso SET acc_estado = 'Activo' WHERE acce_token = ?";
+							$query = $this->pdo->prepare($sql);
+							$query->execute(array($data));
+							$msn = "Estado modificado con exito!";
+					} catch (PDOException $e) {
+							die($e->getMessage()."".$e->getLine()."".$e->getFile());
+					}
+					return $msn;
+			}
 
     public function deleteUsuario($field){
             try {
@@ -257,17 +251,19 @@ Class UsuarioModel {
 						      </tr><tr><td valign="top" font-family: "Lato", sans-serif;";border-collapse:collapse">
 						      <table cellpadding="15"  align="center" style="border-collapse:collapse;background:white;border-radius:0.5rem;margin-bottom:1rem;">
 						        <tr>
-						        </tr><tbody><tr><td width="640" valign="top" style=font-family: "Lato", sans-serif;";border-collapse:collapse">
+										<div style="text-align:center;">
+						           <img src="https://fotos.subefotos.com/e8d6dd1fcb8c0df5131994e4d863ebd1o.jpg"></img>
+						        </div>
 						        <div style="max-width:600px;margin:0 auto">
 						        <div style="background:white;border-radius:0.5rem;margin-bottom:1rem;font-family: "Lato", sans-serif;">
-						           <h2 style="color:#ff2b4d;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">Activa tu cuenta en MyZoneScann</h2>
+						          <h2 style="color:#ff2b4d;line-height:30px;margin-bottom:12px;margin:0 0 12px;text-align:center;">Activa tu cuenta en nuestra App</h2>
 						    <div style="background: #fff; padding: 12px;font-family: "Lato", sans-serif;">
 						      Hola <strong>'.$data[1].'</strong>,
 						    </p>
 						    <p style="font-size:20px;line-height:24px;margin:0 0 16px;font-family: "Lato", sans-serif;">
 						    Tu cuenta se ha registrado correctamente, pero en estos momentos estás inactivo y no podrás ingresar nuestra app de <b>MyZoneScann</b> Para activarla ingresa al siguiente enlace:       </p>
 
-						      <a href="http://localhost:8000/App_MZScann1/index.php?c=usuario&a=updateStatus&acce_token='.$response["acce_token"].'" style="margin-left:30%;">Clic aquí para activar tu cuenta </a>
+						      <a href="http://localhost:8000/MZS_App/index.php?c=usuario&a=updateStatus&status=true&acce_token='.$data[7].'" style="margin-left:30%;">Clic aquí para activar tu cuenta </a>
 						      </div>
 						        </div>
 						      </td>

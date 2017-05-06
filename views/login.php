@@ -3,8 +3,9 @@
 	<form id="contact" method="post"  data-parsley-validate>
 		<h2>MyZone</h2>
 		<h3>Scann</h3>
+
 		<div class="input-field">
-			<i class="fa fa-user" aria-hidden="true"></i> <input id="email" type="email" class="validate" name="data[]" placeholder="Usuario" required>
+			<i class="fa fa-user" aria-hidden="true"></i> <input id="email" type="email" class="validate" name="data[]" placeholder="Correo Electrónico" required>
 		</div>
 		<div class="input-field">
 	<i class="fa fa-unlock-alt" aria-hidden="true"></i><input id="pass" type="password" name="data[]" class="validate" placeholder="Contraseña" required>
@@ -17,7 +18,7 @@
 			 <div class=" col s6">
 				 <p class="key"><a href="registro.html">Registrarse</a></p>
  		</div>
- 		<div class="col s6">
+ 		<div hidden=""class="col s6">
 			<p class="key">Ingresar con</a></p>
 			<div class="col s3">
 			<i class="fa fa-facebook" aria-hidden="true"></i>

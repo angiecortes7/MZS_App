@@ -29,6 +29,8 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text].valid, 
     margin-left: 20px;
     color: orangered;
 }
+
+/*******LOGIN******/
 .login {
   font-family: "lato", Helvetica, Arial, sans-serif;
   color: #777;
@@ -106,7 +108,7 @@ h3 {
   margin-bottom: 20px;
   font-family: 'lato', arial, sans-serif;
   color: #ff2b4d;
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
   padding-left: 25px;
 }
@@ -170,34 +172,18 @@ i{
   padding-bottom: 20px;
 }
 #mod_registro #contact{
-  padding-bottom: 40px;
+  padding: 2px 15px;
   margin-top: 20px;
 }
 #mod_registro .input-field{
   margin-top: 20px;
 }
-#mod_registro #sex{
-  color: #fff;
-    font-size: 16px;
-    margin-left: 20px;
-    margin-top: 80px;
-}
+
 #mod_registro i{
   margin:   10px;
-}
-#mod_registro .sexo{
-  margin: 10px;
+  font-size: 15px;
 }
 
-#mod_registro .tsexo,.test1,.test2{
-  font-size:17px;
-  display: block;
-  color:#fff;
-}
-#mod_registro [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
-    background-color: #ff2b4d;}
-#mod_registro [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
-    border: 2px solid #ff2b4d;}
 #mod_registro    input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
     width: 80%;
     font-size: 15px;
@@ -211,12 +197,17 @@ i{
       font-size: 14px;
     color: #ff3f5e;
 }
+
+#mod_registro .ingresa a {
+    text-decoration: none;
+    color: #ff2b4d;
+    font-size: 18px;
+    margin-left: 27px;
+}
 /**************************ESTILOS OLVIDO CONTRASEÑA************/
 #olvido_contraseña i{
   margin:   10px;
 }
-
-
 
  .olvido,.restore {
   font-family: "lato", Helvetica, Arial, sans-serif;
@@ -270,7 +261,7 @@ i{
      margin-bottom: 10px;
      text-align: center;
      color: #fff;
-     font-size: 20px;
+     font-size: 17px;
  }
  @media (max-width:768px){
    #olvido_contraseña button.hero-btn, .hero-second-btn {
@@ -280,7 +271,14 @@ i{
 
 #olvido_contraseña i{
   color: #fff;
-  font-size: 10px;
+  font-size: 15px;
+}
+
+#olvido_contraseña li.parsley-required{
+    margin-top: 3px;
+    font-size: 14px;
+    color: #ff3f5e;
+    margin-left: 20px;
 }
 
 /*RECUPERA CONTRASEÑA*/
@@ -289,7 +287,12 @@ i{
   color: #fff;
   font-size: 15px;
 }
-
+#recuperarcontrasena form p {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+}
 #recuperarcontrasena .fa-envelope:before {
     content: "\f0e0";
     margin-right: 15px;}
@@ -310,6 +313,56 @@ i{
 #recuperarcontrasena .hero-btn{
   padding: 2px 15px;
     font-size: 20px;
-    margin: 0 21px;
+    margin: 0 23px;
     margin-top: 20px;
+
 }
+#recuperarcontrasena li.parsley-required{
+    margin-top: -25px;
+    font-size: 18px;
+    color: #ff3f5e;
+    margin-left: 20px;
+}
+.password_rec {
+ font-family: "lato", Helvetica, Arial, sans-serif;
+ background-image: url("../images/restaurante-min.jpg");
+ background-position: center center;
+ background-size: cover;
+ background-repeat: no-repeat;
+}
+@media only screen and (max-width: 767px) {
+   .password_rec {
+   background-image: url("../images/restaurante-min.jpg");
+   height: 100vh;
+
+ }
+/***********COMPLETAR-PERFIL********/
+#completar_perfil h2{
+    font-family: 'Lato';
+    text-align: center;
+    color: #fff;
+
+  }
+
+  .completar_p {
+   font-family: "lato", Helvetica, Arial, sans-serif;
+   background-image: url("../images/completar_p.jpg");*/
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+ }
+ @media only screen and (max-width: 767px) {
+     .completar_p {
+     background-image: url("../images/completar_p.jpg");
+     height: 100vh;
+
+   }
+#completar_perfil input[type=date]{
+  width: 80%;
+    font-size: 15px;
+    color: #fff;
+}
+#completar_perfil .input-field input[type=date]:focus {
+         border-bottom: 1px solid #ff2b4d;
+         box-shadow: 0 1px 0 0 #ff2b4d;
+       }
