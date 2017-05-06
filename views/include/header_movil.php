@@ -11,6 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 		<script src='https://www.google.com/recaptcha/api.js'></script>
     <link rel="stylesheet" type="text/css" href="views/assets/css/main.css">
-	<title>Iniciar Sesión</title>
+	<title><?php echo $title; ?></title>
 </head>
 <body <?php echo $class; ?> >

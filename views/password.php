@@ -1,6 +1,6 @@
 	<section id="olvido_contraseña">
 	<div class="container">
-		<form id="contact" method="post" action="Envio-mensaje.asp">
+		<form id="contact" method="post" action="Envio-mensaje.asp" data-parsley-validate>
 			<h3>Recuperar contraseña</h3>
 			<div class="input-field">
 

@@ -18,6 +18,8 @@
         </div>
         <div class="g-recaptcha" id="recapcha" data-sitekey="6LcrghkUAAAAAInKTj9B-5z16U6M_oUzZdhce_84"></div>
 							<button type="submit" id="to-about-section" target="_self" class="hero-btn default">Registrarse</button>
+              <p class="ingresa"><a href="inicio.html">¿Ya tienes una cuenta? Ingresa</a></p>
+
 				<select name="data[]">
                         <?php foreach ($this->Umodel->readRol() as $row) { ?>
                             <option value="<?php echo $row['rol_codigo']; ?>"><?php echo $row["rol_nombre"]; ?></option>
