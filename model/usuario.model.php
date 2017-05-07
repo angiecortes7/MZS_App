@@ -97,9 +97,19 @@ Class UsuarioModel {
 				public function updateUserFail($data){
 						try{
 
+							// Actualizamos los intentos fallidos
 							 $sql = "UPDATE mzscann_acceso SET acc_intento_fallido = (acc_intento_fallido + 1) WHERE usu_codigo = (SELECT usu_codigo FROM mzscann_usuarios WHERE usu_mail = ?) ";
 							 $query = $this->pdo->prepare($sql);
 							 $query->execute(array($data));
+
+							//  Consultamos y devolvemos los intentos que tiene el usuario
+							 $sql = "SELECT acc_intento_fallido, acce_token FROM mzscann_acceso WHERE usu_codigo = (SELECT usu_codigo FROM mzscann_usuarios WHERE usu_mail = ?) ";
+							 $query = $this->pdo->prepare($sql);
+							 $query->execute(array($data));
+							 $result = $query->fetch(PDO::FETCH_BOTH);
+
+							 return $result;
+
 							 }catch (PDOException $e) {
 								 $code = $e->getCode();
 								$text = $e->getMessage();
@@ -203,6 +213,22 @@ Class UsuarioModel {
 					}
 					return $msn;
 			}
+
+			public function userLockedByToken($data){
+				try {
+						$sql="UPDATE mzscann_acceso SET acc_estado  = 'Bloqueado' WHERE acce_token =?";
+						$query = $this->pdo->prepare($sql);
+						$query->execute(array($data));
+						$msn = "Estado modificado con exito!";
+				} catch (PDOException $e) {
+						die($e->getMessage()."".$e->getLine()."".$e->getFile());
+				}
+				return $msn;
+		}
+
+
+
+
 
     public function deleteUsuario($field){
             try {

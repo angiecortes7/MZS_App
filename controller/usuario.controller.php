@@ -89,6 +89,9 @@ public function viewCreate()
 					$data[4]= "USU-".date('Ymd').'-'.date('i');
 					$data[7]= randAlphanum(30);
 					$data[6]= "Inactivo";
+					$data[3]=0;
+
+
 					$result = $this->Umodel->createUsuario($data);
 					$response = $this->Umodel->readUserbyEmail($data);
 				 	$response = $this->Umodel->sendEmailActiveAccount($data);
@@ -114,7 +117,7 @@ public function viewCreate()
  				header("Location: index.php?c=usuario&a=completar_perfil&msn=$msn");
 	     }
 	}
-
+	
 	public function update(){
 		  $field = $_GET["usucode"];
           require_once 'views/include/header.php';
