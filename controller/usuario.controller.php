@@ -117,7 +117,7 @@ public function viewCreate()
  				header("Location: index.php?c=usuario&a=completar_perfil&msn=$msn");
 	     }
 	}
-	
+
 	public function update(){
 		  $field = $_GET["usucode"];
           require_once 'views/include/header.php';
@@ -131,8 +131,8 @@ public function viewCreate()
             header("Location: index.php?c=usuario&msn=$result");
     }
     public function delete(){
-            $data = $_GET["usucode"];
-            $result = $this->Umodel->deleteUsuario($data);
+            $field = $_GET["usucode"];
+            $result = $this->Umodel->deleteUsuario($field);
             header("Location: index.php?c=usuario&msn=$result");
         }
 				public function enviarMensaje_Contrasena(){
