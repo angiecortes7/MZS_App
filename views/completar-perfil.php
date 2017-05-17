@@ -1,117 +1,204 @@
-<section id="completar_perfil">
-  <div class="container">
-    <div id="contact" action="" method="post">
-      <h2>Completa tu perfil</h2>
-  <!--el enctype debe soportar subida de archivos con multipart/form-data-->
-    <form enctype="multipart/form-data" class="formulario">
-      <div class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-        <!--<input name="archivo" type="file" id="imagen"/>
-        <input type="button"class="boton" value="Subir"/>
-        <!--div para visualizar mensajes-->
-        <div class="messages"></div>
-        <!--div para visualizar en el caso de imagen-->
-        <div class="showImage"></div>
-        <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="text" class="validate" placeholder="Teléfono" name="data[]" required>
-        <i class="fa fa-calendar-check-o" aria-hidden="true"></i><input type="date" class="datepicker" placeholder="Fecha De Nacimiento"name="data[]" required>
-        <button id="to-about-section" target="_self" class="hero-btn default">Enviar</button>
-     </div>
-  </form>
+  <script>
+    var examples = [];
+  </script>
+
+  <body>
+  <div>
+    <section id="completar_perfil">
+      <div class="container">
+        <div id="contact" action="" method="post">
+          <h2>Completa tu perfil</h2>
+      <!--el enctype debe soportar subida de archivos con multipart/form-data-->
+        <form enctype="multipart/form-data" class="formulario" data-parsley-validate>
+
+      <div class="example">
+        <div class="example__left">
+          <div id="userpic" class="userpic">
+            <div class="js-preview userpic__preview"></div>
+            <div class="btn btn-success js-fileapi-wrapper">
+              <div class="js-browse">
+                <span class="btn-txt">Foto de perfil</span>
+                <input type="file" name="filedata" />
+              </div>
+              <div class="js-upload" style="display: none;">
+                <div class="progress progress-success"><div class="js-progress bar"></div></div>
+                <span class="btn-txt">Cargando</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          examples.push(function (){
+            $('#userpic').fileapi({
+              url: 'http://rubaxa.org/FileAPI/server/ctrl.php',
+              accept: 'image/*',
+              imageSize: { minWidth: 120, minHeight: 120 },
+              elements: {
+                active: { show: '.js-upload', hide: '.js-browse' },
+                preview: {
+                  el: '.js-preview',
+                  width: 120,
+                  height: 120
+                },
+                progress: '.js-progress'
+              },
+              onSelect: function (evt, ui){
+                var file = ui.files[0];
+
+                if( !FileAPI.support.transform ) {
+                  alert('Your browser does not support Flash :(');
+                }
+                else if( file ){
+                  $('#popup').modal({
+                    closeOnEsc: true,
+                    closeOnOverlayClick: false,
+                    onOpen: function (overlay){
+                      $(overlay).on('click', '.js-upload', function (){
+                        $.modal().close();
+                        $('#userpic').fileapi('upload');
+                      });
+
+                      $('.js-img', overlay).cropper({
+                        file: file,
+                        bgColor: '#fff',
+                        maxSize: [$(window).width()-100, $(window).height()-100],
+                        minSize: [200, 200],
+                        selection: '90%',
+                        onSelect: function (coords){
+                          $('#userpic').fileapi('crop', file, coords);
+                        }
+                      });
+                    }
+                  }).open();
+                }
+              }
+            });
+          });
+        </script>
+      </div>
+
+  <div id="popup" class="popup" style="display: none;">
+    <div class="popup__body"><div class="js-img"></div></div>
+    <div style="margin: 0 0 5px; text-align: center;">
+      <div class="js-upload btn btn_browse btn_browse_small">Finalizar</div>
+    </div>
   </div>
-</div>
+  <div class="showImage"></div>
+  <p>Sexo:</p>
+  <input name="group1" type="radio" id="test1" />
+  <label for="test1">Mujer</label>
+  <input name="group1" type="radio" id="test2" />
+  <label for="test2">Hombre</label>
+  <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="text" class="validate" placeholder="Teléfono" name="data[]" required>
+  <i class="fa fa-calendar-check-o" aria-hidden="true"></i><input type="date" class="datepicker" placeholder="Fecha De Nacimiento"name="data[]" required>
+  <button id="to-about-section" target="_self" class="hero-btn default">Enviar</button>
+  </div>
+  </form>
+  <script src="//code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="/js/jquery.dev.js"><'+'/script>');</script>
 
-</div>
+  <script src="//yandex.st/highlightjs/7.2/highlight.min.js"></script>
+  <script src="//yandex.st/jquery/easing/1.3/jquery.easing.min.js"></script>
 
 
-</div>
-</section>
-<!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-<script>
-		$(document).ready(function(){
-			$('select').material_select();
+  <script>
+    var FileAPI = {
+        debug: true
+      , media: true
+      , staticPath: './FileAPI/'
+    };
+  </script>
+  <script src="views/FileAPI/FileAPI.min.js"></script>
+  <script src="views/FileAPI/FileAPI.exif.js"></script>
+  <script src="views/jquery.fileapi.js"></script>
+  <script src="views/jcrop/jquery.Jcrop.min.js"></script>
+  <script src="views/statics/jquery.modal.js"></script>
 
-	 	$('.datepicker').pickadate({
-    	selectMonths: true, // Creates a dropdown to control month
-    	selectYears: 15 // Creates a dropdown of 15 years to control year
-  		});
-      $('select').material_select();
+  <script>
+    jQuery(function ($){
+      var $blind = $('.splash__blind');
 
-      $(".messages").hide();
-      //queremos que esta variable sea global
-      var fileExtension = "";
-      //función que observa los cambios del campo file y obtiene información
-      $(':file').change(function()
-      {
-          //obtenemos un array con los datos del archivo
-          var file = $("#imagen")[0].files[0];
-          //obtenemos el nombre del archivo
-          var fileName = file.name;
-          //obtenemos la extensión del archivo
-          fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+      $('.splash')
+        .mouseenter(function (){
+          $('.splash__blind', this)
+            .animate({ top: -10 }, 'fast', 'easeInQuad')
+            .animate({ top: 0 }, 'slow', 'easeOutBounce')
+          ;
+        })
+        .click(function (){
+          if( !FileAPI.support.media ){
+            $blind.animate({ top: -$(this).height() }, 'slow', 'easeOutQuart');
+          }
 
+          FileAPI.Camera.publish($('.splash__cam'), function (err, cam){
+            if( err ){
+              alert("Unfortunately, your browser does not support webcam.");
+            } else {
+              $('.splash').off();
+              $blind.animate({ top: -$(this).height() }, 'slow', 'easeOutQuart');
+            }
+          });
+        })
+      ;
+
+
+
+
+
+      $('body').on('click', '[data-tab]', function (evt){
+        evt.preventDefault();
+
+        var el = evt.currentTarget;
+        var tab = $.attr(el, 'data-tab');
+        var $example = $(el).closest('.example');
+
+        $example
+          .find('[data-tab]')
+            .removeClass('active')
+            .filter('[data-tab="'+tab+'"]')
+              .addClass('active')
+              .end()
+            .end()
+          .find('[data-code]')
+            .hide()
+            .filter('[data-code="'+tab+'"]').show()
+        ;
       });
 
-      //al enviar el formulario
-     $(':button').click(function(){
-         //información del formulario
-         var formData = new FormData($(".formulario")[0]);
-         var message = "";
-         //hacemos la petición ajax
-         $.ajax({
-             url: 'upload.php',
-             type: 'POST',
-             // Form data
-             //datos del formulario
-             data: formData,
-             //necesario para subir archivos via ajax
-             cache: false,
-             contentType: false,
-             processData: false,
-             //mientras enviamos el archivo
-             beforeSend: function(){
-                 message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
-                 showMessage(message)
-             },
-             //una vez finalizado correctamente
-             success: function(data){
-                 message = $("<span class='success'>La imagen ha subido correctamente.</span>");
-                 showMessage(message);
-                 if(isImage(fileExtension))
-                 {
-                     $(".showImage").html("<img src='files/"+data+"' />");
-                 }
-             },
-             //si ha ocurrido un error
-             error: function(){
-                 message = $("<span class='error'>Ha ocurrido un error.</span>");
-                 showMessage(message);
-             }
-         });
-     });
-		})
-    //como la utilizamos demasiadas veces, creamos una función para
-    //evitar repetición de código
-    function showMessage(message){
-        $(".messages").html("").show();
-        $(".messages").html(message);
-    }
 
-    //comprobamos si el archivo a subir es una imagen
-    //para visualizarla una vez haya subido
-    function isImage(extension)
-    {
-        switch(extension.toLowerCase())
-        {
-            case 'jpg': case 'gif': case 'png': case 'jpeg':
-                return true;
-            break;
-            default:
-                return false;
-            break;
+      function _getCode(node, all){
+        var code = FileAPI.filter($(node).prop('innerHTML').split('\n'), function (str){ return !!str; });
+        if( !all ){
+          code = code.slice(1, -2);
         }
-    }
 
-</script>
--->
+        var tabSize = (code[0].match(/^\t+/) || [''])[0].length;
+
+        return $('<div/>')
+          .text($.map(code, function (line){
+            return line.substr(tabSize).replace(/\t/g, '   ');
+          }).join('\n'))
+          .prop('innerHTML')
+            .replace(/ disabled=""/g, '')
+            .replace(/&amp;lt;%/g, '<%')
+            .replace(/%&amp;gt;/g, '%>')
+        ;
+      }
+
+
+      // Init examples
+      FileAPI.each(examples, function (fn){
+        fn();
+      });
+    });
+  </script>
+
+  </script>
+  <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>-->
+  <script src="views/lib/parsley/parsley.min.js"></script>
+  <script src="views/lib/parsley/es.js"></script>
+  <!--<script src="views/lib/main.js"></script>-->
+    </body>
+  </html>
