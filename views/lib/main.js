@@ -131,3 +131,4 @@ $("#email").focus(function(){
  	pass2.keyup(function(){
  	coincidePassword();
 });
+  

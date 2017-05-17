@@ -90,11 +90,12 @@
   <label for="test1">Mujer</label>
   <input name="group1" type="radio" id="test2" />
   <label for="test2">Hombre</label>
-  <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="text" class="validate" placeholder="Teléfono" name="data[]" required>
+  <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="number" class="validate" placeholder="Teléfono" name="data[]" required>
   <i class="fa fa-calendar-check-o" aria-hidden="true"></i><input type="date" class="datepicker" placeholder="Fecha De Nacimiento"name="data[]" required>
   <button id="to-about-section" target="_self" class="hero-btn default">Enviar</button>
   </div>
   </form>
+  
   <script src="//code.jquery.com/jquery-1.8.2.min.js"></script>
   <script>!window.jQuery && document.write('<script src="/js/jquery.dev.js"><'+'/script>');</script>
 
@@ -114,7 +115,6 @@
   <script src="views/jquery.fileapi.js"></script>
   <script src="views/jcrop/jquery.Jcrop.min.js"></script>
   <script src="views/statics/jquery.modal.js"></script>
-
   <script>
     jQuery(function ($){
       var $blind = $('.splash__blind');
@@ -130,21 +130,8 @@
           if( !FileAPI.support.media ){
             $blind.animate({ top: -$(this).height() }, 'slow', 'easeOutQuart');
           }
-
-          FileAPI.Camera.publish($('.splash__cam'), function (err, cam){
-            if( err ){
-              alert("Unfortunately, your browser does not support webcam.");
-            } else {
-              $('.splash').off();
-              $blind.animate({ top: -$(this).height() }, 'slow', 'easeOutQuart');
-            }
-          });
         })
       ;
-
-
-
-
 
       $('body').on('click', '[data-tab]', function (evt){
         evt.preventDefault();
@@ -199,6 +186,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>-->
   <script src="views/lib/parsley/parsley.min.js"></script>
   <script src="views/lib/parsley/es.js"></script>
+
   <!--<script src="views/lib/main.js"></script>-->
     </body>
   </html>
