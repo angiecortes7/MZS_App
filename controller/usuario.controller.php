@@ -28,11 +28,11 @@ class UsuarioController{
 			}
 	public function completar_perfil(){
 		$class = 'class = "completar_p"';
-		$title = "Compelta tu perfil";
+		$title = "Completa tu perfil";
 
 		require_once("views/include/header_movil.php");
 		require_once ("views/completar-perfil.php");
-		require_once("views/include/footer.php");
+		
 			}
 
 public function viewCreate()
