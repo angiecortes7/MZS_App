@@ -86,9 +86,9 @@
   </div>
   <div class="showImage"></div>
   <p>Sexo:</p>
-  <input name="group1" type="radio" id="test1" />
+  <input  type="radio" id="test1" value="Mujer" name="data[]"  checked required/>
   <label for="test1">Mujer</label>
-  <input name="group1" type="radio" id="test2" />
+  <input  type="radio" id="test2" value="Hombre" name="data[]"  required/>
   <label for="test2">Hombre</label>
   <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="number" class="validate" placeholder="Teléfono" name="data[]" required>
   <i class="fa fa-calendar-check-o" aria-hidden="true"></i><input type="date" class="datepicker" placeholder="Fecha De Nacimiento"name="data[]" required>
