@@ -31,8 +31,8 @@ class UsuarioController{
 		$title = "Completa tu perfil";
 
 		require_once("views/include/header_movil.php");
-		require_once ("views/completar-perfil.php");
-		
+		require_once("views/completar-perfil.php");
+
 			}
 
 public function viewCreate()
@@ -109,9 +109,10 @@ public function viewCreate()
 	      $token = $_GET["acce_token"];
 	     	$responseUpdate = $this->Umodel->updateStatusByToken($token);
 	     	$responseRead = $this->Umodel->readUserByToken($token);
-	      $_SESSION["_token"]      = $responseRead["acce_token"];
+	      $_SESSION["acce_token"]      = $responseRead["acce_token"];
+				$asd = $_SESSION["acce_token"];
 				$msn = "El usuario se ha activado correctamente";
- 				header("Location: index.php?c=usuario&a=completar_perfil&msn=$msn");
+ 				header("Location: index.php?c=usuario&a=completar_perfil&token=$asd&msn=$msn");
 	     }
 	}
 
