@@ -53,7 +53,7 @@
       header("Location: inicio.html");
   }
 
-    public function userValid(){
+  public function userValid(){
       $data[0] = $_POST["email"];
       $data[1] = $_POST["pass"];
 
@@ -70,8 +70,16 @@
          $_SESSION["_usu_mail"]["email"] = $_POST["email"];
 
       }else{
-         $this->users->updateUserFail($data[0]);
-         $return = array(false,"La contraseña no es la correcta");
+         $result = $this->users->updateUserFail($data[0]);
+
+         if($result[0] >= 3){
+           $return = array(false,"Su cuenta se encuentra bloqueada por numero de intentos fallidos");
+           $this->users->userLockedByToken($result[1]);
+         }else{
+           //  Calculamos cuantos intentos nos quedan.
+           $numIntent = 3 - $result[0];
+           $return = array(false,"La contraseña no es la correcta, le queda ".$numIntent." intentos antes de bloquearse la cuenta.");
+         }
       }
 
       echo json_encode($return);
