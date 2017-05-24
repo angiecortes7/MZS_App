@@ -190,7 +190,7 @@ Class UsuarioModel {
             try {
                 $sql="UPDATE mzscann_usuarios SET usu_nombre_comp = ?, usu_fech_naci = ?, usu_sexo = ?, usu_tel_cel = ?, usu_mail = ?, rol_codigo = ? WHERE usu_codigo = ?";
                 $query = $this->pdo->prepare($sql);
-                $query->execute(array($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6]));
+                $query->execute(array($data[0]$data[1],$data[2],$data[3],$data[4],$data[5],$data[6]));
 
                 $msn = "Modifico con exito!";
             } catch (PDOException $e) {
