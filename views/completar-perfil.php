@@ -86,7 +86,7 @@
   </div>
   <div class="showImage"></div>
   <p>Sexo:</p>
-  <input  type="radio" id="test1" value="Mujer" name="data[]"  checked required/>
+  <input  type="radio" id="test1" value="Mujer" name="data[]"  required/>
   <label for="test1">Mujer</label>
   <input  type="radio" id="test2" value="Hombre" name="data[]"  required/>
   <label for="test2">Hombre</label>
