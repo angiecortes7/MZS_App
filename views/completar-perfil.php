@@ -9,7 +9,7 @@
         <div id="contact" action="" method="post">
           <h2>Completa tu perfil</h2>
       <!--el enctype debe soportar subida de archivos con multipart/form-data-->
-        <form enctype="multipart/form-data" class="formulario" data-parsley-validate>
+        <form enctype="multipart/form-data" action="profile" class="formulario" data-parsley-validate>
 
       <div class="example">
         <div class="example__left">

@@ -14,6 +14,9 @@ RewriteRule ^dashboard$         index.php?c=main&a=dashboard
 
 
 RewriteRule ^Completar-Perfil$         index.php?c=usuario&a=completar_perfil
+
+RewriteRule ^profile$         index.php?c=usuario&a=updateProfile
+
 RewriteRule ^Cerrar-Session$    index.php?c=valid&a=cerrarsession
 
 RewriteRule ^acceso$             index.php?c=valid&a=userValid
