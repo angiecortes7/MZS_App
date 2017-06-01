@@ -117,11 +117,11 @@ public function viewCreate()
 	}
 
 	public function updateProfile(){
-				$data[4]= $GET["acce_token"];
+				$data[4]= $_GET["acce_token"];
 				$result = $this->Umodel->completeProfile($data);
 				header("Location: index.php?c=usuario&a=completar_perfil&msn=$result");
 	     }
-	
+
 
 	public function update(){
 		  $field = $_GET["usucode"];
