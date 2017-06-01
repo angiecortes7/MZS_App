@@ -218,7 +218,7 @@ Class UsuarioModel {
 	            try {
 	                $sql="UPDATE mzscann_usuarios INNER JOIN mzscann_acceso ON mzscann_acceso.usu_codigo=mzscann_usuarios.usu_codigo  SET  usu_sexo = ?, usu_tel_cel = ?, usu_fech_naci = ? WHERE acce_token= ? ";
 	                $query = $this->pdo->prepare($sql);
-	                $query->execute(array($data[0],$data[1],$data[2],$data[4]));
+	                $query->execute(array($data[0],$data[1],$data[2],$data[7]));
 
 	                $msn = "Completó correctamente!";
 	            } catch (PDOException $e) {
