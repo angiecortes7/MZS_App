@@ -9,7 +9,7 @@
         <div id="contact" action="" method="post">
           <h2>Completa tu perfil</h2>
       <!--el enctype debe soportar subida de archivos con multipart/form-data-->
-        <form enctype="multipart/form-data" action="profile" class="formulario" data-parsley-validate>
+        <form enctype="multipart/form-data" action="profile" method="post" class="formulario" data-parsley-validate>
 
       <div class="example">
         <div class="example__left">
@@ -86,12 +86,13 @@
   </div>
   <div class="showImage"></div>
   <p>Sexo:</p>
-  <input  type="radio" id="test1" value="Mujer" name="data[]"  required/>
-  <label for="test1">Mujer</label>
-  <input  type="radio" id="test2" value="Hombre" name="data[]"  required/>
-  <label for="test2">Hombre</label>
-  <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="text" class="validate" placeholder="Teléfono" name="data[]" required>
-  <i class="fa fa-calendar-check-o" aria-hidden="true"></i><input type="date" class="datepicker" placeholder="Fecha De Nacimiento"name="data[]" required>
+  <input type="hidden" name="data[7]" value="<?php echo $_GET['token'] ?>"/>
+  <input  type="radio" id="test1" value="Mujer" name="data[0]"  required/>
+ <label for="test1">Mujer</label>
+ <input  type="radio" id="test2" value="Hombre" name="data[0]"  required/>
+ <label for="test2">Hombre</label>
+  <i class="fa fa-phone" aria-hidden="true"></i><input id="telefono" type="text" class="validate" placeholder="Teléfono" name="data[1]" required>
+  <i class="fa fa-calendar-check-o" aria-hidden="true"></i><input type="date" class="datepicker" placeholder="Fecha De Nacimiento"name="data[2]" required>
   <button id="to-about-section" target="_self" class="hero-btn default">Enviar</button>
   </div>
   </form>

@@ -65,6 +65,7 @@
 
          //  Creamos las variables de Sesion
          $_SESSION["_usu_codigo"] = $result["usu_codigo"];
+         $_SESSION["_acce_token"] = $result["acce_token"];
          /*$_SESSION["_usu_nombre"] = $result["usu_nombre_comp"];
          $_SESSION["_usu_rol"]		= $result["rol_codigo"];*/
          $_SESSION["_usu_mail"]["email"] = $_POST["email"];

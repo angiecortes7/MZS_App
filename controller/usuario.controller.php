@@ -117,7 +117,7 @@ public function viewCreate()
 	}
 
 	public function updateProfile(){
-				$data= $_GET["acce_token"];
+				$data = $_POST["data"];
 				$result = $this->Umodel->completeProfile($data);
 				header("Location: index.php?c=usuario&a=completar_perfil&msn=$result");
 	     }
